@@ -351,7 +351,7 @@
               <div class="w-14 h-14 rounded-2xl bg-teal-50 text-teal-600 flex items-center justify-center mb-6 group-hover:bg-teal-600 group-hover:text-white transition-colors duration-300">
                 <i data-lucide="message-square" class="w-7 h-7"></i>
               </div>
-              <div class="inline-block px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-bold mb-3">堅持 01</div>
+              <div class="inline-block px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-bold mb-3"> 01</div>
               <h3 class="text-xl font-bold text-slate-900 mb-3">把問題講清楚</h3>
               <p class="text-sm text-slate-600 leading-relaxed">
                 每次門診，我們都會用患者與家屬聽得懂的白話語言，清楚說明疼痛的確切來源、目前骨骼肌腱的退化程度、有哪些治療選項，以及大致需要的療程時程與預估費用。
@@ -368,7 +368,7 @@
               <div class="w-14 h-14 rounded-2xl bg-cyan-50 text-cyan-600 flex items-center justify-center mb-6 group-hover:bg-cyan-600 group-hover:text-white transition-colors duration-300">
                 <i data-lucide="shield-check" class="w-7 h-7"></i>
               </div>
-              <div class="inline-block px-3 py-1 rounded-full bg-cyan-50 text-cyan-700 text-xs font-bold mb-3">堅持 02</div>
+              <div class="inline-block px-3 py-1 rounded-full bg-cyan-50 text-cyan-700 text-xs font-bold mb-3"> 02</div>
               <h3 class="text-xl font-bold text-slate-900 mb-3">不過度治療</h3>
               <p class="text-sm text-slate-600 leading-relaxed">
                 能用健保規範處理就優先走健保路徑（如健保用藥、物理治療、符合條件之健保玻尿酸）。若病況評估需要自費進階療程（如 PRP 或體外震波），一定會先誠實告知預期成效與限制，由您自主決定。
@@ -385,7 +385,7 @@
               <div class="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-300">
                 <i data-lucide="footprints" class="w-7 h-7"></i>
               </div>
-              <div class="inline-block px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold mb-3">堅持 03</div>
+              <div class="inline-block px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold mb-3"> 03</div>
               <h3 class="text-xl font-bold text-slate-900 mb-3">陪您走完療程</h3>
               <p class="text-sm text-slate-600 leading-relaxed">
                 骨骼關節與筋膜疼痛通常需要 2 至 12 週的修復與復健期。醫療團隊會主動追蹤每一次復健與注射後的恢復進度，並依據改善狀況動態調整下一次治療方向，陪您踏實走出疼痛。
@@ -417,15 +417,18 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           
           <!-- Service 1: 退化性關節炎治療 -->
-          <div class="bg-slate-50/70 hover:bg-white rounded-2xl p-7 border border-slate-200/80 hover:border-brand-300 shadow-sm hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between group">
+          <div class="bg-slate-50/70 hover:bg-white rounded-2xl p-6 border border-slate-200/80 hover:border-brand-300 shadow-sm hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between group">
             <div>
-              <div class="flex items-center justify-between mb-4">
-                <div class="w-12 h-12 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <i data-lucide="bone" class="w-6 h-6"></i>
-                </div>
-                <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-teal-50 text-teal-700 border border-teal-200">骨科核心</span>
+              <div class="h-48 w-full overflow-hidden rounded-xl mb-5 relative bg-slate-100">
+                <img src="img/退化性關節炎.jpg" alt="退化性關節炎階梯治療" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <span class="absolute top-3 right-3 text-xs font-semibold px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md text-teal-700 border border-teal-200 shadow-sm">骨科核心</span>
               </div>
-              <h3 class="text-xl font-bold text-slate-900 mb-2">退化性關節炎階梯治療</h3>
+              <div class="flex items-center gap-2.5 mb-3">
+                <div class="w-9 h-9 rounded-lg bg-teal-100 text-teal-700 flex items-center justify-center shrink-0">
+                  <i data-lucide="bone" class="w-5 h-5"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900">退化性關節炎階梯治療</h3>
+              </div>
               <p class="text-sm text-slate-600 leading-relaxed mb-4">
                 針對膝關節、髖關節退化磨損引起的僵硬、卡頓、上下樓梯疼痛。提供健保消炎鎮痛、物理復健、玻尿酸潤滑、PRP再生療法，必要時轉介北榮骨科評估微創手術。
               </p>
@@ -441,15 +444,18 @@
           </div>
 
           <!-- Service 2: 體外震波治療 ESWT -->
-          <div class="bg-slate-50/70 hover:bg-white rounded-2xl p-7 border border-slate-200/80 hover:border-brand-300 shadow-sm hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between group">
+          <div class="bg-slate-50/70 hover:bg-white rounded-2xl p-6 border border-slate-200/80 hover:border-brand-300 shadow-sm hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between group">
             <div>
-              <div class="flex items-center justify-between mb-4">
-                <div class="w-12 h-12 rounded-xl bg-cyan-100 text-cyan-700 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <i data-lucide="zap" class="w-6 h-6"></i>
-                </div>
-                <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-cyan-50 text-cyan-700 border border-cyan-200">非侵入性</span>
+              <div class="h-48 w-full overflow-hidden rounded-xl mb-5 relative bg-slate-100">
+                <img src="img/ESWT.jpg" alt="德國聚焦型體外震波 (ESWT)" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <span class="absolute top-3 right-3 text-xs font-semibold px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md text-cyan-700 border border-cyan-200 shadow-sm">非侵入性</span>
               </div>
-              <h3 class="text-xl font-bold text-slate-900 mb-2">德國聚焦型體外震波 (ESWT)</h3>
+              <div class="flex items-center gap-2.5 mb-3">
+                <div class="w-9 h-9 rounded-lg bg-cyan-100 text-cyan-700 flex items-center justify-center shrink-0">
+                  <i data-lucide="zap" class="w-5 h-5"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900">德國聚焦型體外震波 (ESWT)</h3>
+              </div>
               <p class="text-sm text-slate-600 leading-relaxed mb-4">
                 引進德國原廠 WOLF 聚焦型體外震波儀。利用高能量聲波直達深層受損組織，瓦解慢性鈣化沉積、促進血管新生與自體組織修復，不需打針或開刀。
               </p>
@@ -465,15 +471,18 @@
           </div>
 
           <!-- Service 3: PRP 自體血小板注射 -->
-          <div class="bg-slate-50/70 hover:bg-white rounded-2xl p-7 border border-slate-200/80 hover:border-brand-300 shadow-sm hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between group">
+          <div class="bg-slate-50/70 hover:bg-white rounded-2xl p-6 border border-slate-200/80 hover:border-brand-300 shadow-sm hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between group">
             <div>
-              <div class="flex items-center justify-between mb-4">
-                <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <i data-lucide="droplet" class="w-6 h-6"></i>
-                </div>
-                <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">再生醫療</span>
+              <div class="h-48 w-full overflow-hidden rounded-xl mb-5 relative bg-slate-100">
+                <img src="img/PRP.jpg" alt="超音波導引 PRP 自體血小板" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <span class="absolute top-3 right-3 text-xs font-semibold px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md text-emerald-700 border border-emerald-200 shadow-sm">再生醫療</span>
               </div>
-              <h3 class="text-xl font-bold text-slate-900 mb-2">超音波導引 PRP 自體血小板</h3>
+              <div class="flex items-center gap-2.5 mb-3">
+                <div class="w-9 h-9 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                  <i data-lucide="droplet" class="w-5 h-5"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900">超音波導引 PRP 自體血小板</h3>
+              </div>
               <p class="text-sm text-slate-600 leading-relaxed mb-4">
                 抽取自體血液經由專用離心管分離出高濃度血小板與生長因子。由院長親自透過高階超音波即時顯影，精準注射於受損關節腔、韌帶或肌腱破裂處。
               </p>
@@ -489,15 +498,18 @@
           </div>
 
           <!-- Service 4: 玻尿酸關節腔注射 -->
-          <div class="bg-slate-50/70 hover:bg-white rounded-2xl p-7 border border-slate-200/80 hover:border-brand-300 shadow-sm hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between group">
+          <div class="bg-slate-50/70 hover:bg-white rounded-2xl p-6 border border-slate-200/80 hover:border-brand-300 shadow-sm hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between group">
             <div>
-              <div class="flex items-center justify-between mb-4">
-                <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <i data-lucide="sparkles" class="w-6 h-6"></i>
-                </div>
-                <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-200">關節潤滑</span>
+              <div class="h-48 w-full overflow-hidden rounded-xl mb-5 relative bg-slate-100">
+                <img src="img/玻尿酸關節注射.jpg" alt="玻尿酸關節腔注射" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <span class="absolute top-3 right-3 text-xs font-semibold px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md text-blue-700 border border-blue-200 shadow-sm">關節潤滑</span>
               </div>
-              <h3 class="text-xl font-bold text-slate-900 mb-2">玻尿酸關節腔注射</h3>
+              <div class="flex items-center gap-2.5 mb-3">
+                <div class="w-9 h-9 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center shrink-0">
+                  <i data-lucide="sparkles" class="w-5 h-5"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900">玻尿酸關節腔注射</h3>
+              </div>
               <p class="text-sm text-slate-600 leading-relaxed mb-4">
                 補充隨著年齡流失的關節滑液，達到潤滑、緩衝吸震與保護軟骨的效果。符合健保保守治療無效規範者可協助健保申請；亦提供長效單劑型自費選擇。
               </p>
@@ -513,15 +525,18 @@
           </div>
 
           <!-- Service 5: 健保物理復健治療 -->
-          <div class="bg-slate-50/70 hover:bg-white rounded-2xl p-7 border border-slate-200/80 hover:border-brand-300 shadow-sm hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between group">
+          <div class="bg-slate-50/70 hover:bg-white rounded-2xl p-6 border border-slate-200/80 hover:border-brand-300 shadow-sm hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between group">
             <div>
-              <div class="flex items-center justify-between mb-4">
-                <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <i data-lucide="activity" class="w-6 h-6"></i>
-                </div>
-                <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-200">健保物理治療</span>
+              <div class="h-48 w-full overflow-hidden rounded-xl mb-5 relative bg-slate-100">
+                <img src="img/健保復健治療.jpg" alt="健保物理復健與儀器治療" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <span class="absolute top-3 right-3 text-xs font-semibold px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md text-amber-700 border border-amber-200 shadow-sm">健保物理治療</span>
               </div>
-              <h3 class="text-xl font-bold text-slate-900 mb-2">健保物理復健與儀器治療</h3>
+              <div class="flex items-center gap-2.5 mb-3">
+                <div class="w-9 h-9 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
+                  <i data-lucide="activity" class="w-5 h-5"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900">健保物理復健與儀器治療</h3>
+              </div>
               <p class="text-sm text-slate-600 leading-relaxed mb-4">
                 由專業合格物理治療師親自執行。提供熱敷、電療（中頻向量/經皮電刺激）、超音波深層熱療、頸椎及腰椎電腦機械牽引，舒緩神經壓迫與肩頸背痛。
               </p>
@@ -537,15 +552,18 @@
           </div>
 
           <!-- Service 6: 運動傷害與家醫科外科 -->
-          <div class="bg-slate-50/70 hover:bg-white rounded-2xl p-7 border border-slate-200/80 hover:border-brand-300 shadow-sm hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between group">
+          <div class="bg-slate-50/70 hover:bg-white rounded-2xl p-6 border border-slate-200/80 hover:border-brand-300 shadow-sm hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between group">
             <div>
-              <div class="flex items-center justify-between mb-4">
-                <div class="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <i data-lucide="stethoscope" class="w-6 h-6"></i>
-                </div>
-                <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200">家醫與外科</span>
+              <div class="h-48 w-full overflow-hidden rounded-xl mb-5 relative bg-slate-100">
+                <img src="img/運動傷害.jpg" alt="運動傷害・家醫與一般外科" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <span class="absolute top-3 right-3 text-xs font-semibold px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md text-indigo-700 border border-indigo-200 shadow-sm">家醫與外科</span>
               </div>
-              <h3 class="text-xl font-bold text-slate-900 mb-2">運動傷害・家醫與一般外科</h3>
+              <div class="flex items-center gap-2.5 mb-3">
+                <div class="w-9 h-9 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center shrink-0">
+                  <i data-lucide="stethoscope" class="w-5 h-5"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900">運動傷害・家醫與一般外科</h3>
+              </div>
               <p class="text-sm text-slate-600 leading-relaxed mb-4">
                 急性腳踝扭傷、肌肉拉傷、跑者膝、肩夾擠症候群。同時提供一般外傷縫合與換藥、家庭醫學科慢性病追蹤、失能個案家庭醫師照護服務。
               </p>
