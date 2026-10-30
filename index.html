@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>光明診所 King's Clinic | 骨科・復健科・家醫科・外科 | 台北北投石牌健保特約</title>
+  <meta name="description" content="光明診所（King's Clinic）位於台北市北投區石牌（鄰近台北榮總與石牌捷運站），由前台北榮總專科主治醫師張光明院長主持。以骨科為核心，整合復健科、家醫科與外科，提供退化性關節炎、PRP自體血小板注射、德國聚焦型體外震波、玻尿酸注射與物理治療。">
+  
+  <!-- Google Fonts: Noto Sans TC -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              200: '#99f6e4',
+              300: '#5eead4',
+              400: '#2dd4bf',
+              500: '#14b8a6',
+              600: '#0d9488', // 核心醫療青碧色 (Teal)
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a',
+              dark: '#083344',
+            },
+            accent: {
+              50: '#ecfeff',
+              100: '#cffafe',
+              500: '#06b6d4',
+              600: '#0891b2',
+              700: '#0e7490',
+            },
+            medical: {
+              blue: '#1e3a8a',
+              sky: '#0284c7',
+            }
+          },
+          fontFamily: {
+            sans: ['"Noto Sans TC"', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+          boxShadow: {
+            'card': '0 4px 20px -2px rgba(13, 148, 136, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04)',
+            'card-hover': '0 12px 30px -4px rgba(13, 148, 136, 0.16), 0 4px 12px -2px rgba(0, 0, 0, 0.06)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* 點陣柔和醫療背景 */
+    .hero-pattern {
+      background-color: #f8fafc;
+      background-image: radial-gradient(#0d9488 0.75px, transparent 0.75px), radial-gradient(#0891b2 0.75px, #f8fafc 0.75px);
+      background-size: 28px 28px;
+      background-position: 0 0, 14px 14px;
+      opacity: 0.98;
+    }
+    
+    /* 自訂捲軸樣式 */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #99f6e4;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #0d9488;
+    }
+  </style>
+</head>
+<body class="font-sans text-slate-700 bg-slate-50 antialiased selection:bg-brand-100 selection:text-brand-800">
+
+  <!-- ==================== 1. TOP ANNOUNCEMENT BAR (頂部資訊條) ==================== -->
+  <div class="bg-brand-900 text-teal-100 text-xs py-2 px-4 border-b border-brand-800">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div class="flex items-center space-x-3 text-center sm:text-left">
+        <span class="inline-flex items-center gap-1.5 font-medium">
+          <i data-lucide="shield-check" class="w-3.5 h-3.5 text-brand-300"></i>
+          健保特約醫療機構・台北榮總社區醫療群合作診所
+        </span>
+        <span class="hidden md:inline text-brand-700">|</span>
+        <span class="hidden md:inline-flex items-center gap-1.5 text-teal-200">
+          <i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-300"></i>
+          台北市北投區石牌路二段99巷55號1樓 (捷運石牌站旁)
+        </span>
+      </div>
+      <div class="flex items-center space-x-4">
+        <a href="tel:02-2821-0197" class="hover:text-white transition flex items-center gap-1.5 font-bold text-white bg-brand-800/80 px-2.5 py-0.5 rounded-full border border-brand-700">
+          <i data-lucide="phone-call" class="w-3.5 h-3.5 text-brand-300"></i>
+          預約諮詢：(02) 2821-0197
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 2. STICKY NAVBAR (固定導航列) ==================== -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm transition-all duration-300 border-b border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        
+        <!-- Brand Logo: 光明診所 King's Clinic -->
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-brand-700 to-accent-600 flex items-center justify-center text-white shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform duration-300">
+            <i data-lucide="activity" class="w-6 h-6 stroke-[2.5]"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-2xl font-black tracking-tight text-slate-800">光明診所</span>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-brand-50 text-brand-700 border border-brand-200">健保骨科復健</span>
+            </div>
+            <p class="text-[11px] font-medium tracking-widest text-slate-400 uppercase">King's Clinic • Orthopedics & Rehabilitation</p>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center space-x-7 text-sm font-medium text-slate-600">
+          <a href="#about" class="hover:text-brand-600 transition-colors py-2 relative hover:after:w-full after:w-0 after:h-0.5 after:bg-brand-600 after:absolute after:bottom-0 after:left-0 after:transition-all">關於光明</a>
+          <a href="#commitments" class="hover:text-brand-600 transition-colors py-2 relative hover:after:w-full after:w-0 after:h-0.5 after:bg-brand-600 after:absolute after:bottom-0 after:left-0 after:transition-all">三大堅持</a>
+          <a href="#services" class="hover:text-brand-600 transition-colors py-2 relative hover:after:w-full after:w-0 after:h-0.5 after:bg-brand-600 after:absolute after:bottom-0 after:left-0 after:transition-all">診療服務</a>
+          <a href="#doctor" class="hover:text-brand-600 transition-colors py-2 relative hover:after:w-full after:w-0 after:h-0.5 after:bg-brand-600 after:absolute after:bottom-0 after:left-0 after:transition-all">院長醫師</a>
+          <a href="#timetable" class="hover:text-brand-600 transition-colors py-2 relative hover:after:w-full after:w-0 after:h-0.5 after:bg-brand-600 after:absolute after:bottom-0 after:left-0 after:transition-all">門診時間</a>
+          <a href="#news" class="hover:text-brand-600 transition-colors py-2 relative hover:after:w-full after:w-0 after:h-0.5 after:bg-brand-600 after:absolute after:bottom-0 after:left-0 after:transition-all">最新消息</a>
+          <a href="#contact" class="hover:text-brand-600 transition-colors py-2 relative hover:after:w-full after:w-0 after:h-0.5 after:bg-brand-600 after:absolute after:bottom-0 after:left-0 after:transition-all">交通導引</a>
+        </nav>
+
+        <!-- Right Action Button -->
+        <div class="hidden sm:flex items-center gap-3">
+          <a href="#booking" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-brand-600 to-accent-600 hover:from-brand-700 hover:to-accent-700 shadow-md shadow-brand-600/25 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0">
+            <i data-lucide="calendar-check" class="w-4 h-4"></i>
+            <span>線上預約掛號</span>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-menu-btn" type="button" class="lg:hidden p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition focus:outline-none" aria-label="切換選單">
+          <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-2 shadow-xl">
+      <a href="#about" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600 mobile-nav-link">關於光明</a>
+      <a href="#commitments" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600 mobile-nav-link">三大堅持</a>
+      <a href="#services" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600 mobile-nav-link">診療服務</a>
+      <a href="#doctor" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600 mobile-nav-link">院長醫師</a>
+      <a href="#timetable" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600 mobile-nav-link">門診時間</a>
+      <a href="#news" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600 mobile-nav-link">最新消息</a>
+      <a href="#contact" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600 mobile-nav-link">交通導引</a>
+      <div class="pt-2">
+        <a href="#booking" class="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-base font-semibold text-white bg-brand-600 hover:bg-brand-700 shadow-md mobile-nav-link">
+          <i data-lucide="calendar-check" class="w-5 h-5"></i>
+          立即線上預約掛號
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==================== 3. HERO BANNER (首頁主視覺) ==================== -->
+    <section class="relative overflow-hidden hero-pattern pt-12 pb-20 lg:pt-20 lg:pb-28">
+      <div class="absolute -top-24 -left-24 w-96 h-96 bg-brand-200/40 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute top-1/2 -right-24 w-96 h-96 bg-accent-200/40 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Hero Text -->
+          <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-100/90 text-brand-800 text-xs font-semibold tracking-wide border border-brand-200 shadow-sm">
+              <span class="flex h-2 w-2 relative">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-600"></span>
+              </span>
+              台北榮總社區醫療群特約・在地深耕家庭式骨科診所
+            </div>
+
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+              把問題講清楚・不過度治療<br>
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-700 via-brand-600 to-accent-600">
+                陪您走完每一步康復旅程
+              </span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
+              光明診所（King's Clinic）坐落於台北市北投石牌，以骨科為核心，整合復健科、家庭醫學科與外科。由前台北榮總專科主治醫師張光明院長主持，提供退化性關節炎階梯式治療、德國聚焦型體外震波（ESWT）、PRP自體血小板注射、玻尿酸注射與健保物理復健，為您打造溫暖無障礙的就醫體驗。
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+              <a href="#booking" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-bold text-white bg-brand-600 hover:bg-brand-700 shadow-lg shadow-brand-600/30 hover:shadow-xl hover:-translate-y-0.5 transition-all text-base">
+                <i data-lucide="clipboard-pen" class="w-5 h-5"></i>
+                線上預約看診
+              </a>
+              <a href="#timetable" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-slate-700 bg-white hover:bg-slate-100 border border-slate-200 shadow-sm transition-all hover:-translate-y-0.5 text-base">
+                <i data-lucide="clock" class="w-5 h-5 text-brand-600"></i>
+                查詢門診班表
+              </a>
+            </div>
+
+            <!-- Highlights -->
+            <div class="pt-6 border-t border-slate-200/80 grid grid-cols-3 gap-4 text-center lg:text-left">
+              <div>
+                <div class="text-2xl lg:text-3xl font-extrabold text-brand-700">北榮專科</div>
+                <div class="text-xs text-slate-500 mt-0.5">主治醫師親自看診</div>
+              </div>
+              <div>
+                <div class="text-2xl lg:text-3xl font-extrabold text-brand-700">德國原裝</div>
+                <div class="text-xs text-slate-500 mt-0.5">WOLF 聚焦型震波儀</div>
+              </div>
+              <div>
+                <div class="text-2xl lg:text-3xl font-extrabold text-brand-700">友善無障礙</div>
+                <div class="text-xs text-slate-500 mt-0.5">一樓無階梯方便長者</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Image & Interactive Card -->
+          <div class="lg:col-span-5 relative">
+            <div class="relative mx-auto max-w-md lg:max-w-none">
+              <div class="absolute inset-0 bg-gradient-to-tr from-brand-600 to-accent-500 rounded-3xl transform rotate-2 scale-102 opacity-20 filter blur-lg"></div>
+              
+              <div class="relative bg-white p-3 rounded-3xl shadow-2xl border border-slate-100 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80" 
+                     alt="光明診所專業骨科關節超音波導引檢查與問診" 
+                     class="w-full h-80 sm:h-96 object-cover rounded-2xl transform hover:scale-105 transition-transform duration-700">
+                
+                <!-- Floating Info Badge 1 -->
+                <div class="absolute top-6 left-6 bg-white/95 backdrop-blur-md py-2.5 px-4 rounded-xl shadow-lg border border-slate-100 flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                    <i data-lucide="check-circle" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <p class="text-xs text-slate-400 font-medium">健保優先</p>
+                    <p class="text-sm font-bold text-slate-800">能健保絕不推自費</p>
+                  </div>
+                </div>
+
+                <!-- Floating Info Badge 2 -->
+                <div class="absolute bottom-6 right-6 bg-white/95 backdrop-blur-md py-2.5 px-4 rounded-xl shadow-lg border border-slate-100 flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center">
+                    <i data-lucide="bone" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <p class="text-xs text-slate-400 font-medium">關節疼痛修復</p>
+                    <p class="text-sm font-bold text-slate-800">超音波導引精準治療</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4. ABOUT SECTION (關於光明診所) ==================== -->
+    <section id="about" class="py-16 lg:py-24 bg-white border-b border-slate-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <div class="lg:col-span-6 relative">
+            <div class="grid grid-cols-2 gap-4">
+              <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=600&q=80" alt="光明診所候診環境" class="rounded-2xl shadow-md h-56 w-full object-cover">
+              <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&q=80" alt="骨科超音波與物理治療室" class="rounded-2xl shadow-md h-56 w-full object-cover mt-6">
+            </div>
+            <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-brand-900 text-white py-3 px-6 rounded-2xl shadow-xl flex items-center gap-3 whitespace-nowrap">
+              <i data-lucide="heart-pulse" class="w-6 h-6 text-brand-300"></i>
+              <span class="text-sm font-semibold tracking-wide">石牌在地家庭式骨科・無障礙友善診間</span>
+            </div>
+          </div>
+
+          <div class="lg:col-span-6 space-y-5 lg:pl-6">
+            <span class="text-xs font-bold tracking-wider text-brand-600 uppercase bg-brand-50 px-3 py-1 rounded-md border border-brand-200">ABOUT KING'S CLINIC</span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
+              台北市北投石牌在地深耕，讓長輩與鄰里放心的骨科復健診所
+            </h2>
+            <p class="text-slate-600 leading-relaxed text-justify">
+              光明診所（King's Clinic）位於台北市北投區石牌路二段99巷55號，鄰近台北榮民總醫院與石牌捷運站。我們是一間以骨科為核心，整合復健科、家庭醫學科與外科的健保特約家庭式骨科診所。
+            </p>
+            <p class="text-slate-600 leading-relaxed text-justify">
+              許多長輩面對關節退化、腰痠背痛，常在大醫院耗費半天排隊，卻只能獲得三分鐘草草問診。張光明院長秉持醫者初心，打造「一站式」骨關節照護：從即時超音波診斷、健保物理復健、德國體外震波、玻尿酸與 PRP 再生注射，到必要時的手術轉介評估，由熟悉您身體狀況的專科醫師全程守護。
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div class="flex items-start gap-3">
+                <div class="p-1.5 rounded-lg bg-teal-50 text-teal-600 mt-0.5">
+                  <i data-lucide="check" class="w-4 h-4"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-slate-800 text-sm">台北榮總緊密合作</h4>
+                  <p class="text-xs text-slate-500 mt-0.5">社區共同照護門診，雙向轉診無縫接軌</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="p-1.5 rounded-lg bg-teal-50 text-teal-600 mt-0.5">
+                  <i data-lucide="check" class="w-4 h-4"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-slate-800 text-sm">無障礙動線設計</h4>
+                  <p class="text-xs text-slate-500 mt-0.5">一樓無階梯、寬敞通道，輪椅長者輕鬆就醫</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 5. THREE CORE COMMITMENTS (三大堅持：每天都做、絕不打折) ==================== -->
+    <section id="commitments" class="py-16 lg:py-24 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-xs font-bold tracking-wider text-brand-600 uppercase bg-brand-100/60 px-3 py-1 rounded-md">OUR COMMITMENTS</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-3">
+            光明診所「三件每天都做、絕不打折的事」
+          </h2>
+          <p class="text-slate-600 mt-3 text-sm sm:text-base">
+            我們深信良好的醫療始於真誠的溝通。在這裡，您不必擔心聽不懂醫學術語，更不用擔心被強迫推銷昂貴自費療程。
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <!-- Commitment 1 -->
+          <div class="bg-white rounded-3xl p-8 shadow-card hover:shadow-card-hover transition-all duration-300 border border-slate-100 hover:-translate-y-1 group flex flex-col justify-between">
+            <div>
+              <div class="w-14 h-14 rounded-2xl bg-teal-50 text-teal-600 flex items-center justify-center mb-6 group-hover:bg-teal-600 group-hover:text-white transition-colors duration-300">
+                <i data-lucide="message-square" class="w-7 h-7"></i>
+              </div>
+              <div class="inline-block px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-bold mb-3">堅持 01</div>
+              <h3 class="text-xl font-bold text-slate-900 mb-3">把問題講清楚</h3>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                每次門診，我們都會用患者與家屬聽得懂的白話語言，清楚說明疼痛的確切來源、目前骨骼肌腱的退化程度、有哪些治療選項，以及大致需要的療程時程與預估費用。
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-100 text-xs text-brand-700 font-semibold flex items-center gap-1">
+              <i data-lucide="check-circle2" class="w-4 h-4"></i> 充分溝通・知情同意
+            </div>
+          </div>
+
+          <!-- Commitment 2 -->
+          <div class="bg-white rounded-3xl p-8 shadow-card hover:shadow-card-hover transition-all duration-300 border border-slate-100 hover:-translate-y-1 group flex flex-col justify-between">
+            <div>
+              <div class="w-14 h-14 rounded-2xl bg-cyan-50 text-cyan-600 flex items-center justify-center mb-6 group-hover:bg-cyan-600 group-hover:text-white transition-colors duration-300">
+                <i data-lucide="shield-check" class="w-7 h-7"></i>
+              </div>
+              <div class="inline-block px-3 py-1 rounded-full bg-cyan-50 text-cyan-700 text-xs font-bold mb-3">堅持 02</div>
+              <h3 class="text-xl font-bold text-slate-900 mb-3">不過度治療</h3>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                能用健保規範處理就優先走健保路徑（如健保用藥、物理治療、符合條件之健保玻尿酸）。若病況評估需要自費進階療程（如 PRP 或體外震波），一定會先誠實告知預期成效與限制，由您自主決定。
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-100 text-xs text-brand-700 font-semibold flex items-center gap-1">
+              <i data-lucide="check-circle2" class="w-4 h-4"></i> 絕不強迫推銷自費
+            </div>
+          </div>
+
+          <!-- Commitment 3 -->
+          <div class="bg-white rounded-3xl p-8 shadow-card hover:shadow-card-hover transition-all duration-300 border border-slate-100 hover:-translate-y-1 group flex flex-col justify-between">
+            <div>
+              <div class="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-300">
+                <i data-lucide="footprints" class="w-7 h-7"></i>
+              </div>
+              <div class="inline-block px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold mb-3">堅持 03</div>
+              <h3 class="text-xl font-bold text-slate-900 mb-3">陪您走完療程</h3>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                骨骼關節與筋膜疼痛通常需要 2 至 12 週的修復與復健期。醫療團隊會主動追蹤每一次復健與注射後的恢復進度，並依據改善狀況動態調整下一次治療方向，陪您踏實走出疼痛。
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-100 text-xs text-brand-700 font-semibold flex items-center gap-1">
+              <i data-lucide="check-circle2" class="w-4 h-4"></i> 全程追蹤・動態調整
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 6. MEDICAL SERVICES (主打診療服務) ==================== -->
+    <section id="services" class="py-16 lg:py-24 bg-white border-t border-slate-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-xs font-bold tracking-wider text-brand-600 uppercase bg-brand-50 px-3 py-1 rounded-md border border-brand-200">OUR SERVICES</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-3">
+            光明診所全方位骨科與復健診療
+          </h2>
+          <p class="text-slate-600 mt-3 text-sm sm:text-base">
+            從非侵入性物理復健、精準注射到術後整合，提供一站式完整醫療方案。
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          <!-- Service 1: 退化性關節炎治療 -->
+          <div class="bg-slate-50/70 hover:bg-white rounded-2xl p-7 border border-slate-200/80 hover:border-brand-300 shadow-sm hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <i data-lucide="bone" class="w-6 h-6"></i>
+                </div>
+                <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-teal-50 text-teal-700 border border-teal-200">骨科核心</span>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-2">退化性關節炎階梯治療</h3>
+              <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                針對膝關節、髖關節退化磨損引起的僵硬、卡頓、上下樓梯疼痛。提供健保消炎鎮痛、物理復健、玻尿酸潤滑、PRP再生療法，必要時轉介北榮骨科評估微創手術。
+              </p>
+              <ul class="text-xs text-slate-500 space-y-1.5 mb-6">
+                <li class="flex items-center gap-1.5"><i data-lucide="check-circle2" class="w-3.5 h-3.5 text-brand-600"></i>關節軟骨磨損程度精確分期</li>
+                <li class="flex items-center gap-1.5"><i data-lucide="check-circle2" class="w-3.5 h-3.5 text-brand-600"></i>健保/自費玻尿酸與增生注射</li>
+                <li class="flex items-center gap-1.5"><i data-lucide="check-circle2" class="w-3.5 h-3.5 text-brand-600"></i>關節周圍肌力強化衛教指引</li>
+              </ul>
+            </div>
+            <a href="#booking" class="inline-flex items-center text-sm font-semibold text-brand-600 hover:text-brand-700 group-hover:translate-x-1 transition-all">
+              預約門診諮詢 <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+            </a>
+          </div>
+
+          <!-- Service 2: 體外震波治療 ESWT -->
+          <div class="bg-slate-50/70 hover:bg-white rounded-2xl p-7 border border-slate-200/80 hover:border-brand-300 shadow-sm hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 rounded-xl bg-cyan-100 text-cyan-700 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <i data-lucide="zap" class="w-6 h-6"></i>
+                </div>
+                <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-cyan-50 text-cyan-700 border border-cyan-200">非侵入性</span>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-2">德國聚焦型體外震波 (ESWT)</h3>
+              <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                引進德國原廠 WOLF 聚焦型體外震波儀。利用高能量聲波直達深層受損組織，瓦解慢性鈣化沉積、促進血管新生與自體組織修復，不需打針或開刀。
+              </p>
+              <ul class="text-xs text-slate-500 space-y-1.5 mb-6">
+                <li class="flex items-center gap-1.5"><i data-lucide="check-circle2" class="w-3.5 h-3.5 text-cyan-600"></i>足底筋膜炎、足跟痛頑固發炎</li>
+                <li class="flex items-center gap-1.5"><i data-lucide="check-circle2" class="w-3.5 h-3.5 text-cyan-600"></i>網球肘、高爾夫球肘、阿基里斯腱炎</li>
+                <li class="flex items-center gap-1.5"><i data-lucide="check-circle2" class="w-3.5 h-3.5 text-cyan-600"></i>五十肩、旋轉肌袖鈣化性肌腱炎</li>
+              </ul>
+            </div>
+            <a href="#booking" class="inline-flex items-center text-sm font-semibold text-brand-600 hover:text-brand-700 group-hover:translate-x-1 transition-all">
+              預約門診諮詢 <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+            </a>
+          </div>
+
+          <!-- Service 3: PRP 自體血小板注射 -->
+          <div class="bg-slate-50/70 hover:bg-white rounded-2xl p-7 border border-slate-200/80 hover:border-brand-300 shadow-sm hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <i data-lucide="droplet" class="w-6 h-6"></i>
+                </div>
+                <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">再生醫療</span>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-2">超音波導引 PRP 自體血小板</h3>
+              <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                抽取自體血液經由專用離心管分離出高濃度血小板與生長因子。由院長親自透過高階超音波即時顯影，精準注射於受損關節腔、韌帶或肌腱破裂處。
+              </p>
+              <ul class="text-xs text-slate-500 space-y-1.5 mb-6">
+                <li class="flex items-center gap-1.5"><i data-lucide="check-circle2" class="w-3.5 h-3.5 text-emerald-600"></i>高解析度超音波即時導引不盲打</li>
+                <li class="flex items-center gap-1.5"><i data-lucide="check-circle2" class="w-3.5 h-3.5 text-emerald-600"></i>刺激軟骨與韌帶組織自我修復再生</li>
+                <li class="flex items-center gap-1.5"><i data-lucide="check-circle2" class="w-3.5 h-3.5 text-emerald-600"></i>自體組織萃取無免疫排斥風險</li>
+              </ul>
+            </div>
+            <a href="#booking" class="inline-flex items-center text-sm font-semibold text-brand-600 hover:text-brand-700 group-hover:translate-x-1 transition-all">
+              預約門診諮詢 <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+            </a>
+          </div>
+
+          <!-- Service 4: 玻尿酸關節腔注射 -->
+          <div class="bg-slate-50/70 hover:bg-white rounded-2xl p-7 border border-slate-200/80 hover:border-brand-300 shadow-sm hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <i data-lucide="sparkles" class="w-6 h-6"></i>
+                </div>
+                <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-200">關節潤滑</span>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-2">玻尿酸關節腔注射</h3>
+              <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                補充隨著年齡流失的關節滑液，達到潤滑、緩衝吸震與保護軟骨的效果。符合健保保守治療無效規範者可協助健保申請；亦提供長效單劑型自費選擇。
+              </p>
+              <ul class="text-xs text-slate-500 space-y-1.5 mb-6">
+                <li class="flex items-center gap-1.5"><i data-lucide="check-circle2" class="w-3.5 h-3.5 text-blue-600"></i>符合健保給付條件者代為送件申請</li>
+                <li class="flex items-center gap-1.5"><i data-lucide="check-circle2" class="w-3.5 h-3.5 text-blue-600"></i>原廠進口高黏彈性長效玻尿酸</li>
+                <li class="flex items-center gap-1.5"><i data-lucide="check-circle2" class="w-3.5 h-3.5 text-blue-600"></i>有效降低日常行走關節摩擦不適</li>
+              </ul>
+            </div>
+            <a href="#booking" class="inline-flex items-center text-sm font-semibold text-brand-600 hover:text-brand-700 group-hover:translate-x-1 transition-all">
+              預約門診諮詢 <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+            </a>
+          </div>
+
+          <!-- Service 5: 健保物理復健治療 -->
+          <div class="bg-slate-50/70 hover:bg-white rounded-2xl p-7 border border-slate-200/80 hover:border-brand-300 shadow-sm hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <i data-lucide="activity" class="w-6 h-6"></i>
+                </div>
+                <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-200">健保物理治療</span>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-2">健保物理復健與儀器治療</h3>
+              <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                由專業合格物理治療師親自執行。提供熱敷、電療（中頻向量/經皮電刺激）、超音波深層熱療、頸椎及腰椎電腦機械牽引，舒緩神經壓迫與肩頸背痛。
+              </p>
+              <ul class="text-xs text-slate-500 space-y-1.5 mb-6">
+                <li class="flex items-center gap-1.5"><i data-lucide="check-circle2" class="w-3.5 h-3.5 text-amber-600"></i>健保一次開單可連續復健 6 次</li>
+                <li class="flex items-center gap-1.5"><i data-lucide="check-circle2" class="w-3.5 h-3.5 text-amber-600"></i>電腦腰椎與頸椎微調牽引設備</li>
+                <li class="flex items-center gap-1.5"><i data-lucide="check-circle2" class="w-3.5 h-3.5 text-amber-600"></i>姿勢不良矯正與居家運動伸展指導</li>
+              </ul>
+            </div>
+            <a href="#booking" class="inline-flex items-center text-sm font-semibold text-brand-600 hover:text-brand-700 group-hover:translate-x-1 transition-all">
+              預約門診諮詢 <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+            </a>
+          </div>
+
+          <!-- Service 6: 運動傷害與家醫科外科 -->
+          <div class="bg-slate-50/70 hover:bg-white rounded-2xl p-7 border border-slate-200/80 hover:border-brand-300 shadow-sm hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <i data-lucide="stethoscope" class="w-6 h-6"></i>
+                </div>
+                <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200">家醫與外科</span>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-2">運動傷害・家醫與一般外科</h3>
+              <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                急性腳踝扭傷、肌肉拉傷、跑者膝、肩夾擠症候群。同時提供一般外傷縫合與換藥、家庭醫學科慢性病追蹤、失能個案家庭醫師照護服務。
+              </p>
+              <ul class="text-xs text-slate-500 space-y-1.5 mb-6">
+                <li class="flex items-center gap-1.5"><i data-lucide="check-circle2" class="w-3.5 h-3.5 text-indigo-600"></i>運動生物力學評估與肌貼包紮</li>
+                <li class="flex items-center gap-1.5"><i data-lucide="check-circle2" class="w-3.5 h-3.5 text-indigo-600"></i>外傷處置、皮下腫瘤局部小手術</li>
+                <li class="flex items-center gap-1.5"><i data-lucide="check-circle2" class="w-3.5 h-3.5 text-indigo-600"></i>居家失能長者家庭醫師照護特約</li>
+              </ul>
+            </div>
+            <a href="#booking" class="inline-flex items-center text-sm font-semibold text-brand-600 hover:text-brand-700 group-hover:translate-x-1 transition-all">
+              預約門診諮詢 <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 7. DOCTOR INTRODUCTION (院長醫師介紹) ==================== -->
+    <section id="doctor" class="py-16 lg:py-24 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-xs font-bold tracking-wider text-brand-600 uppercase bg-brand-100/60 px-3 py-1 rounded-md">PHYSICIAN PROFILE</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-3">
+            院長醫師介紹
+          </h2>
+          <p class="text-slate-600 mt-3 text-sm sm:text-base">
+            深厚的醫學中心臨床訓練，以同理心、耐心傾聽每位患者的痛點。
+          </p>
+        </div>
+
+        <div class="max-w-4xl mx-auto bg-white rounded-3xl overflow-hidden shadow-card border border-slate-100 p-8 sm:p-12">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            
+            <div class="md:col-span-5 text-center">
+              <div class="w-56 h-64 mx-auto rounded-2xl overflow-hidden shadow-md bg-slate-100 border-4 border-white">
+                <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=600&q=80" 
+                     alt="光明診所 張光明 院長" 
+                     class="w-full h-full object-cover object-top">
+              </div>
+              <div class="mt-4">
+                <h3 class="text-2xl font-black text-slate-900">張光明 醫師</h3>
+                <p class="text-sm font-semibold text-brand-600 mt-0.5">光明診所 院長 / 負責醫師</p>
+                <span class="inline-block mt-2 px-3 py-1 rounded-full bg-teal-50 text-teal-800 text-xs font-medium border border-teal-200">
+                  前台北榮民總醫院專科主治醫師
+                </span>
+              </div>
+            </div>
+
+            <div class="md:col-span-7 space-y-5">
+              <div>
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400">專業資歷與合格證照</h4>
+                <ul class="mt-2 text-sm text-slate-600 space-y-2 leading-relaxed">
+                  <li class="flex items-start gap-2">
+                    <i data-lucide="check" class="w-4 h-4 text-brand-600 shrink-0 mt-0.5"></i>
+                    <span>前台北榮民總醫院專科主治醫師</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i data-lucide="check" class="w-4 h-4 text-brand-600 shrink-0 mt-0.5"></i>
+                    <span>中華民國家庭醫學科專科醫師</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i data-lucide="check" class="w-4 h-4 text-brand-600 shrink-0 mt-0.5"></i>
+                    <span>中華民國骨科專科臨床背景與關節超音波認證</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i data-lucide="check" class="w-4 h-4 text-brand-600 shrink-0 mt-0.5"></i>
+                    <span>中華民國外科專科醫師</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i data-lucide="check" class="w-4 h-4 text-brand-600 shrink-0 mt-0.5"></i>
+                    <span>台北榮總家庭醫學部「社區共同照護門診」特約醫師</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i data-lucide="check" class="w-4 h-4 text-brand-600 shrink-0 mt-0.5"></i>
+                    <span>臺北市衛生局「居家失能個案家庭醫師照護服務」特約醫師</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400">主治專長領域</h4>
+                <div class="mt-2 flex flex-wrap gap-2">
+                  <span class="text-xs bg-slate-100 text-slate-700 px-3 py-1 rounded-lg">退化性關節炎階梯治療</span>
+                  <span class="text-xs bg-slate-100 text-slate-700 px-3 py-1 rounded-lg">超音波導引 PRP 注射</span>
+                  <span class="text-xs bg-slate-100 text-slate-700 px-3 py-1 rounded-lg">德國聚焦型體外震波 (ESWT)</span>
+                  <span class="text-xs bg-slate-100 text-slate-700 px-3 py-1 rounded-lg">玻尿酸關節注射</span>
+                  <span class="text-xs bg-slate-100 text-slate-700 px-3 py-1 rounded-lg">足底筋膜炎與五十肩</span>
+                  <span class="text-xs bg-slate-100 text-slate-700 px-3 py-1 rounded-lg">運動傷害與復健規劃</span>
+                </div>
+              </div>
+
+              <blockquote class="p-4 rounded-xl bg-brand-50/80 border-l-4 border-brand-600 text-xs text-brand-900 leading-relaxed italic">
+                「行醫多年，我最在乎的不是做了多少次自費療程，而是患者踏出診所時，心裡踏實不焦慮，知道自己的身體正在往康復的方向走。」
+              </blockquote>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 8. TIMETABLE (門診時間表 - 與官網完全一致) ==================== -->
+    <section id="timetable" class="py-16 lg:py-24 bg-white border-y border-slate-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <span class="text-xs font-bold tracking-wider text-brand-600 uppercase bg-brand-50 px-3 py-1 rounded-md border border-brand-200">OUTPATIENT SCHEDULE</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-3">
+            光明診所 門診時間表
+          </h2>
+          <p class="text-slate-600 mt-3 text-sm sm:text-base">
+            每週一至週六由張光明院長親自看診。建議來院前先撥打電話 (02) 2821-0197 預約確認。
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-card border border-slate-200 overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-center border-collapse">
+              <thead>
+                <tr class="bg-brand-900 text-white text-sm font-semibold tracking-wide">
+                  <th class="py-4 px-4 w-36 border-r border-brand-800">時段 / 星期</th>
+                  <th class="py-4 px-3 border-r border-brand-800">週一 (Mon)</th>
+                  <th class="py-4 px-3 border-r border-brand-800">週二 (Tue)</th>
+                  <th class="py-4 px-3 border-r border-brand-800">週三 (Wed)</th>
+                  <th class="py-4 px-3 border-r border-brand-800">週四 (Thu)</th>
+                  <th class="py-4 px-3 border-r border-brand-800">週五 (Fri)</th>
+                  <th class="py-4 px-3 border-r border-brand-800">週六 (Sat)</th>
+                  <th class="py-4 px-3 bg-slate-800 text-slate-400">週日 (Sun)</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 text-sm">
+                
+                <!-- Morning Slot -->
+                <tr class="hover:bg-slate-50/80 transition-colors">
+                  <td class="py-5 px-4 font-bold text-slate-800 bg-brand-50/50 border-r border-slate-200">
+                    <div class="flex items-center justify-center gap-1.5 text-brand-700">
+                      <i data-lucide="sun" class="w-4 h-4"></i>
+                      <span>早診</span>
+                    </div>
+                    <div class="text-[11px] font-normal text-slate-500 mt-0.5">09:00 - 12:00</div>
+                  </td>
+                  <td class="py-4 px-2 border-r border-slate-100 bg-teal-50/30">
+                    <span class="inline-block px-2.5 py-1 rounded-md text-xs font-bold bg-teal-600 text-white shadow-xs">張光明 院長</span>
+                    <p class="text-[11px] text-slate-600 mt-1">骨科 / 復健評估</p>
+                  </td>
+                  <td class="py-4 px-2 border-r border-slate-100 text-slate-400 text-xs">
+                    休診
+                  </td>
+                  <td class="py-4 px-2 border-r border-slate-100 bg-teal-50/30">
+                    <span class="inline-block px-2.5 py-1 rounded-md text-xs font-bold bg-teal-600 text-white shadow-xs">張光明 院長</span>
+                    <p class="text-[11px] text-slate-600 mt-1">骨科 / 震波 / PRP</p>
+                  </td>
+                  <td class="py-4 px-2 border-r border-slate-100 text-slate-400 text-xs">
+                    休診
+                  </td>
+                  <td class="py-4 px-2 border-r border-slate-100 text-slate-400 text-xs">
+                    休診
+                  </td>
+                  <td class="py-4 px-2 border-r border-slate-100 bg-teal-50/30">
+                    <span class="inline-block px-2.5 py-1 rounded-md text-xs font-bold bg-teal-600 text-white shadow-xs">張光明 院長</span>
+                    <p class="text-[11px] text-slate-600 mt-1">骨科復健專診</p>
+                  </td>
+                  <td rowspan="2" class="py-4 px-2 bg-slate-50 text-slate-400 font-medium tracking-widest align-middle">
+                    <div class="flex flex-col items-center justify-center gap-2">
+                      <i data-lucide="coffee" class="w-5 h-5 text-slate-300"></i>
+                      <span>固定休診</span>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Afternoon & Evening Slot -->
+                <tr class="hover:bg-slate-50/80 transition-colors">
+                  <td class="py-5 px-4 font-bold text-slate-800 bg-brand-50/50 border-r border-slate-200">
+                    <div class="flex items-center justify-center gap-1.5 text-brand-700">
+                      <i data-lucide="moon" class="w-4 h-4"></i>
+                      <span>午/晚診</span>
+                    </div>
+                    <div class="text-[11px] font-normal text-slate-500 mt-0.5">詳見各日註記</div>
+                  </td>
+                  <td class="py-4 px-2 border-r border-slate-100 bg-teal-50/30">
+                    <span class="inline-block px-2.5 py-1 rounded-md text-xs font-bold bg-teal-600 text-white shadow-xs">張光明 院長</span>
+                    <div class="text-[11px] text-slate-700 font-semibold mt-1">15:00 - 20:00</div>
+                  </td>
+                  <td class="py-4 px-2 border-r border-slate-100 bg-teal-50/30">
+                    <span class="inline-block px-2.5 py-1 rounded-md text-xs font-bold bg-teal-600 text-white shadow-xs">張光明 院長</span>
+                    <div class="text-[11px] text-slate-700 font-semibold mt-1">17:00 - 20:00</div>
+                  </td>
+                  <td class="py-4 px-2 border-r border-slate-100 bg-teal-50/30">
+                    <span class="inline-block px-2.5 py-1 rounded-md text-xs font-bold bg-teal-600 text-white shadow-xs">張光明 院長</span>
+                    <div class="text-[11px] text-slate-700 font-semibold mt-1">15:00 - 20:00</div>
+                  </td>
+                  <td class="py-4 px-2 border-r border-slate-100 bg-teal-50/30">
+                    <span class="inline-block px-2.5 py-1 rounded-md text-xs font-bold bg-teal-600 text-white shadow-xs">張光明 院長</span>
+                    <div class="text-[11px] text-slate-700 font-semibold mt-1">17:00 - 20:00</div>
+                    <p class="text-[10px] text-teal-800 mt-0.5 font-medium">(下午榮總門診)</p>
+                  </td>
+                  <td class="py-4 px-2 border-r border-slate-100 bg-teal-50/30">
+                    <span class="inline-block px-2.5 py-1 rounded-md text-xs font-bold bg-teal-600 text-white shadow-xs">張光明 院長</span>
+                    <div class="text-[11px] text-slate-700 font-semibold mt-1">15:00 - 20:00</div>
+                  </td>
+                  <td class="py-4 px-2 border-r border-slate-100 text-slate-400 text-xs">
+                    午後休診
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Schedule Notes -->
+          <div class="bg-slate-50 p-4 border-t border-slate-200 text-xs text-slate-600 flex flex-col sm:flex-row justify-between items-center gap-3">
+            <div class="flex flex-wrap items-center gap-4">
+              <span class="flex items-center gap-1.5"><i data-lucide="alert-circle" class="w-4 h-4 text-amber-500"></i> 每週四下午張光明醫師於台北榮民總醫院家醫部開設「社區共同照護門診」。</span>
+              <span class="flex items-center gap-1.5"><i data-lucide="phone" class="w-4 h-4 text-brand-600"></i> 為避免現場久候或臨時異動，出發前請先致電 <strong>(02) 2821-0197</strong> 預約。</span>
+            </div>
+            <a href="tel:02-2821-0197" class="font-bold text-brand-600 hover:text-brand-700 flex items-center gap-1 whitespace-nowrap">
+              電話預約確認 <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 9. LATEST NEWS & ANNOUNCEMENTS (最新公告與衛教) ==================== -->
+    <section id="news" class="py-16 lg:py-24 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-14">
+          <div>
+            <span class="text-xs font-bold tracking-wider text-brand-600 uppercase bg-brand-100/60 px-3 py-1 rounded-md">CLINIC UPDATES</span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-3">
+              最新消息與骨科復健衛教
+            </h2>
+            <p class="text-slate-600 mt-2 text-sm sm:text-base">
+              即時門診異動公告、專業退化性關節炎照護知識分享。
+            </p>
+          </div>
+          <div class="mt-4 md:mt-0">
+            <a href="#contact" class="text-sm font-semibold text-brand-700 hover:text-brand-800 flex items-center gap-1">
+              查看全部公告 <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <!-- Article 1: 門診公告 -->
+          <article class="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 border border-slate-100 group flex flex-col justify-between">
+            <div>
+              <div class="h-48 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=600&q=80" 
+                     alt="門診時間公告" 
+                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <span class="absolute top-3 left-3 bg-amber-600 text-white text-[11px] font-semibold px-2.5 py-1 rounded-md">
+                  門診異動公告
+                </span>
+              </div>
+              <div class="p-6">
+                <div class="text-xs text-slate-400 mb-2 flex items-center gap-2">
+                  <i data-lucide="calendar" class="w-3.5 h-3.5"></i> 最新公告
+                  <span>•</span>
+                  <span>光明診所 行政處</span>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 group-hover:text-brand-600 transition-colors leading-snug">
+                  門診時間異動與預約看診提醒公告
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-500 mt-3 leading-relaxed">
+                  為維持每位病患的看診品質與充裕問診時間，建議初診與複診民眾提前透過電話 (02) 2821-0197 預約掛號。若遇國定假日或醫師研討會休診，將提早公告於現場與網站...
+                </p>
+              </div>
+            </div>
+            <div class="px-6 pb-6 pt-0">
+              <span class="inline-flex items-center text-xs font-bold text-brand-600 group-hover:underline">
+                閱讀詳細資訊 <i data-lucide="chevron-right" class="w-3.5 h-3.5 ml-0.5"></i>
+              </span>
+            </div>
+          </article>
+
+          <!-- Article 2: 衛教文章 -->
+          <article class="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 border border-slate-100 group flex flex-col justify-between">
+            <div>
+              <div class="h-48 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=600&q=80" 
+                     alt="膝關節退化治療" 
+                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <span class="absolute top-3 left-3 bg-teal-600 text-white text-[11px] font-semibold px-2.5 py-1 rounded-md">
+                  骨科衛教
+                </span>
+              </div>
+              <div class="p-6">
+                <div class="text-xs text-slate-400 mb-2 flex items-center gap-2">
+                  <i data-lucide="calendar" class="w-3.5 h-3.5"></i> 醫師衛教
+                  <span>•</span>
+                  <span>張光明 院長</span>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 group-hover:text-brand-600 transition-colors leading-snug">
+                  膝蓋退化一定要換人工關節嗎？從玻尿酸到 PRP 階梯治療解析
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-500 mt-3 leading-relaxed">
+                  退化性關節炎並非一蹴可幾，早期發現可透過減重、健保物理復健強化股四頭肌，並搭配關節腔玻尿酸注射或PRP自體血小板促進軟骨修復，能大幅延緩開刀時機...
+                </p>
+              </div>
+            </div>
+            <div class="px-6 pb-6 pt-0">
+              <span class="inline-flex items-center text-xs font-bold text-brand-600 group-hover:underline">
+                閱讀完整文章 <i data-lucide="chevron-right" class="w-3.5 h-3.5 ml-0.5"></i>
+              </span>
+            </div>
+          </article>
+
+          <!-- Article 3: 體外震波衛教 -->
+          <article class="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 border border-slate-100 group flex flex-col justify-between">
+            <div>
+              <div class="h-48 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=600&q=80" 
+                     alt="足底筋膜炎震波治療" 
+                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <span class="absolute top-3 left-3 bg-cyan-600 text-white text-[11px] font-semibold px-2.5 py-1 rounded-md">
+                  疼痛治療
+                </span>
+              </div>
+              <div class="p-6">
+                <div class="text-xs text-slate-400 mb-2 flex items-center gap-2">
+                  <i data-lucide="calendar" class="w-3.5 h-3.5"></i> 疼痛解析
+                  <span>•</span>
+                  <span>張光明 院長</span>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 group-hover:text-brand-600 transition-colors leading-snug">
+                  早上下床踩地足跟劇痛？德國聚焦型體外震波精準瓦解足底筋膜炎
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-500 mt-3 leading-relaxed">
+                  足底筋膜炎反覆發作常伴隨鈣化。德國聚焦式體外震波可深入深層筋膜痛點，利用高能量聲波激發微創自癒反應與血管新生，是非侵入性、無傷口的絕佳選擇...
+                </p>
+              </div>
+            </div>
+            <div class="px-6 pb-6 pt-0">
+              <span class="inline-flex items-center text-xs font-bold text-brand-600 group-hover:underline">
+                閱讀完整文章 <i data-lucide="chevron-right" class="w-3.5 h-3.5 ml-0.5"></i>
+              </span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 10. CONTACT, MAP & APPOINTMENT BOOKING ==================== -->
+    <section id="contact" class="py-16 lg:py-24 bg-white relative">
+      <div id="booking" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-xs font-bold tracking-wider text-brand-600 uppercase bg-brand-50 px-3 py-1 rounded-md border border-brand-200">APPOINTMENT & LOCATION</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-3">
+            預約看診與交通位置導引
+          </h2>
+          <p class="text-slate-600 mt-3 text-sm sm:text-base">
+            台北市北投區石牌路二段99巷55號1樓（鄰近台北榮民總醫院、石牌捷運站）。
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+          
+          <!-- Left: Contact Details & Map -->
+          <div class="lg:col-span-5 space-y-6">
+            
+            <div class="bg-gradient-to-br from-brand-900 to-brand-800 text-white rounded-3xl p-8 shadow-xl">
+              <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                <i data-lucide="building-2" class="w-6 h-6 text-brand-300"></i>
+                光明診所 King's Clinic
+              </h3>
+              
+              <div class="space-y-4 text-sm text-teal-100">
+                <div class="flex items-start gap-3">
+                  <div class="p-2 rounded-lg bg-white/10 text-brand-300 shrink-0">
+                    <i data-lucide="map-pin" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <strong class="block text-white font-semibold">診所地址</strong>
+                    <span>台北市北投區石牌路二段99巷55號1、2樓</span>
+                    <p class="text-xs text-teal-300 mt-0.5">（捷運淡水信義線「石牌站」步行約 8 分鐘，鄰近台北榮總）</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="p-2 rounded-lg bg-white/10 text-brand-300 shrink-0">
+                    <i data-lucide="phone" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <strong class="block text-white font-semibold">預約掛號專線</strong>
+                    <a href="tel:02-2821-0197" class="text-white text-lg font-bold underline">(02) 2821-0197</a>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="p-2 rounded-lg bg-white/10 text-brand-300 shrink-0">
+                    <i data-lucide="clock" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <strong class="block text-white font-semibold">看診時段</strong>
+                    <p class="text-xs text-teal-200 mt-0.5">
+                      • 週一、三：09:00–12:00 / 15:00–20:00<br>
+                      • 週二、四：17:00–20:00<br>
+                      • 週五：15:00–20:00<br>
+                      • 週六：09:00–12:00（週日休診）
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="p-2 rounded-lg bg-white/10 text-brand-300 shrink-0">
+                    <i data-lucide="bus" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <strong class="block text-white font-semibold">大眾運輸與停車</strong>
+                    <p class="text-xs text-teal-200 mt-0.5">
+                      • 捷運：石牌站 1 號出口轉乘公車或沿石牌路直行。<br>
+                      • 公車：台北榮總站、永明派出所站。<br>
+                      • 停車：周邊設有榮總平面/地下停車場及路邊停車格。
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Google Map -->
+            <div class="rounded-3xl overflow-hidden shadow-card border border-slate-200 h-64 bg-slate-100 relative">
+              <iframe 
+                title="光明診所 Google 地圖位置"
+                class="w-full h-full border-0" 
+                src="https://maps.google.com/maps?q=%E5%8F%B0%E5%8C%97%E5%B8%82%E5%8C%97%E6%8A%95%E5%8D%80%E7%9F%B3%E7%89%8C%E8%B7%AF%E4%BA%8C%E6%AE%B599%E5%87%BD55%E8%99%9F&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                allowfullscreen="" 
+                loading="lazy">
+              </iframe>
+            </div>
+
+          </div>
+
+          <!-- Right: Interactive Appointment Booking Form -->
+          <div class="lg:col-span-7 bg-white rounded-3xl p-8 sm:p-10 shadow-card border border-slate-200">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-10 h-10 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center">
+                <i data-lucide="calendar-plus" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-slate-900">光明診所 線上預約掛號單</h3>
+                <p class="text-xs text-slate-500">送出表單後，門診同仁將於看診時段內與您電話確認預約資訊</p>
+              </div>
+            </div>
+
+            <!-- Form -->
+            <form id="appointment-form" class="space-y-5" onsubmit="handleFormSubmit(event)">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <!-- Name -->
+                <div>
+                  <label for="name" class="block text-xs font-bold text-slate-700 uppercase mb-1.5">
+                    姓名 <span class="text-rose-500">*</span>
+                  </label>
+                  <input type="text" id="name" required placeholder="請輸入姓名" 
+                         class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm transition">
+                </div>
+
+                <!-- Phone -->
+                <div>
+                  <label for="phone" class="block text-xs font-bold text-slate-700 uppercase mb-1.5">
+                    聯絡電話 <span class="text-rose-500">*</span>
+                  </label>
+                  <input type="tel" id="phone" required placeholder="例: 0912-345-678" 
+                         class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm transition">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <!-- Service Category -->
+                <div>
+                  <label for="department" class="block text-xs font-bold text-slate-700 uppercase mb-1.5">
+                    預約項目 / 評估項目 <span class="text-rose-500">*</span>
+                  </label>
+                  <select id="department" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm transition bg-white text-slate-700">
+                    <option value="" disabled selected>請選擇諮詢項目</option>
+                    <option value="arthritis">退化性關節炎評估 / 治療</option>
+                    <option value="eswt">體外震波治療 (ESWT 德國WOLF)</option>
+                    <option value="prp">超音波導引 PRP 自體血小板注射</option>
+                    <option value="ha">玻尿酸關節腔注射 (健保/自費)</option>
+                    <option value="rehab">健保物理復健 (電熱療/牽引)</option>
+                    <option value="sports">運動傷害 / 扭拉傷 / 筋膜疼痛</option>
+                    <option value="family">家庭醫學科 / 慢箋 / 外科處置</option>
+                  </select>
+                </div>
+
+                <!-- Doctor Selection -->
+                <div>
+                  <label for="doctor-select" class="block text-xs font-bold text-slate-700 uppercase mb-1.5">
+                    主治醫師
+                  </label>
+                  <select id="doctor-select" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm transition bg-white text-slate-700">
+                    <option value="chang" selected>張光明 院長 (前台北榮總專科醫師)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <!-- Preferred Date -->
+                <div>
+                  <label for="date" class="block text-xs font-bold text-slate-700 uppercase mb-1.5">
+                    希望看診日期 <span class="text-rose-500">*</span>
+                  </label>
+                  <input type="date" id="date" required 
+                         class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm transition text-slate-700">
+                </div>
+
+                <!-- Preferred Time Slot -->
+                <div>
+                  <label for="timeslot" class="block text-xs font-bold text-slate-700 uppercase mb-1.5">
+                    希望時段 <span class="text-rose-500">*</span>
+                  </label>
+                  <select id="timeslot" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm transition bg-white text-slate-700">
+                    <option value="morning">早診 (週一、三、六 09:00 - 12:00)</option>
+                    <option value="afternoon">午診 (週一、三、五 15:00 - 18:00)</option>
+                    <option value="evening">晚診 (週一至週五 17:00 / 18:00 - 20:00)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Message -->
+              <div>
+                <label for="notes" class="block text-xs font-bold text-slate-700 uppercase mb-1.5">
+                  症狀或疼痛部位簡述
+                </label>
+                <textarea id="notes" rows="3" placeholder="請簡述您的疼痛部位（如右膝退化、足底筋膜、網球肘、腰部牽引等）及持續時間..." 
+                          class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm transition"></textarea>
+              </div>
+
+              <!-- Privacy Policy Checkbox -->
+              <div class="flex items-start gap-2.5">
+                <input type="checkbox" id="privacy" required class="mt-1 w-4 h-4 text-brand-600 rounded border-slate-300 focus:ring-brand-500 cursor-pointer">
+                <label for="privacy" class="text-xs text-slate-500 leading-normal cursor-pointer">
+                  我已閱讀並同意光明診所之個人資料保護聲明，同意診所人員因預約聯絡之目的使用本人所提供之基本資訊。
+                </label>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" id="submit-btn" class="w-full py-3.5 px-6 rounded-xl font-bold text-white bg-brand-600 hover:bg-brand-700 shadow-md shadow-brand-600/30 hover:shadow-lg transition-all flex items-center justify-center gap-2 text-base">
+                <i data-lucide="send" class="w-5 h-5"></i>
+                送出預約申請
+              </button>
+            </form>
+
+            <!-- Success Alert Notification -->
+            <div id="booking-success" class="hidden mt-6 p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center shrink-0">
+                  <i data-lucide="check" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-sm">預約單已成功送出！</h4>
+                  <p class="text-xs text-emerald-700 mt-0.5">感謝您的填寫。光明診所同仁將儘速檢視您的時段，並以電話向您確認報到時間。若有急性疼痛需求，亦可直接來電 (02) 2821-0197。</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== 11. FOOTER (頁尾版權與免責聲明) ==================== -->
+  <footer class="bg-slate-900 text-slate-400 text-sm border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+        
+        <!-- Clinic Brand Info (2 cols) -->
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center gap-3 text-white">
+            <div class="w-10 h-10 rounded-xl bg-brand-600 flex items-center justify-center shadow-md">
+              <i data-lucide="activity" class="w-5 h-5 text-white"></i>
+            </div>
+            <div>
+              <span class="text-xl font-bold tracking-tight">光明診所</span>
+              <p class="text-[10px] text-brand-400 tracking-widest uppercase">King's Clinic • 骨科 復健科 家醫科 外科</p>
+            </div>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed pr-6">
+            光明診所秉持「把問題講清楚、不過度治療、陪您走完療程」三大原則，整合骨科、復健科、家庭醫學科與外科，提供社區長輩與民眾最溫暖、專業且值得信賴的健康守護。
+          </p>
+          <div class="text-xs text-slate-400 space-y-1">
+            <p>院所地址：台北市北投區石牌路二段99巷55號1、2樓</p>
+            <p>掛號專線：(02) 2821-0197</p>
+            <p>合作體系：台北榮民總醫院社區醫療群合作診所</p>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-white font-semibold text-sm mb-4">快速導覽</h4>
+          <ul class="space-y-2.5 text-xs">
+            <li><a href="#about" class="hover:text-brand-400 transition-colors">關於光明診所</a></li>
+            <li><a href="#commitments" class="hover:text-brand-400 transition-colors">三大服務堅持</a></li>
+            <li><a href="#services" class="hover:text-brand-400 transition-colors">骨科與復健服務</a></li>
+            <li><a href="#doctor" class="hover:text-brand-400 transition-colors">張光明院長資歷</a></li>
+            <li><a href="#timetable" class="hover:text-brand-400 transition-colors">門診排班時間</a></li>
+          </ul>
+        </div>
+
+        <!-- Specialties -->
+        <div>
+          <h4 class="text-white font-semibold text-sm mb-4">核心醫療項目</h4>
+          <ul class="space-y-2.5 text-xs">
+            <li><a href="#services" class="hover:text-brand-400 transition-colors">退化性關節炎階梯照護</a></li>
+            <li><a href="#services" class="hover:text-brand-400 transition-colors">德國聚焦型體外震波 (ESWT)</a></li>
+            <li><a href="#services" class="hover:text-brand-400 transition-colors">超音波導引 PRP 自體血小板</a></li>
+            <li><a href="#services" class="hover:text-brand-400 transition-colors">玻尿酸關節腔潤滑注射</a></li>
+            <li><a href="#services" class="hover:text-brand-400 transition-colors">健保物理治療 (電熱療/牽引)</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact & Transport -->
+        <div>
+          <h4 class="text-white font-semibold text-sm mb-4">聯絡與門診時間</h4>
+          <ul class="space-y-2 text-xs">
+            <li class="flex items-center gap-2">
+              <i data-lucide="phone" class="w-3.5 h-3.5 text-brand-400"></i>
+              <span>(02) 2821-0197</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-lucide="clock" class="w-3.5 h-3.5 text-brand-400"></i>
+              <span>週一至週六 (週日休診)</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-400"></i>
+              <span>近捷運石牌站 / 台北榮總</span>
+            </li>
+          </ul>
+          
+          <div class="mt-4 pt-3 border-t border-slate-800">
+            <a href="tel:02-2821-0197" class="inline-flex items-center gap-1.5 text-xs text-white bg-brand-800 hover:bg-brand-700 px-3 py-1.5 rounded-lg transition">
+              <i data-lucide="phone-call" class="w-3.5 h-3.5 text-brand-300"></i>
+              電話預約掛號
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Medical Disclaimer & Copyright -->
+      <div class="mt-12 pt-8 border-t border-slate-800 text-xs text-slate-400 space-y-3">
+        <p class="leading-relaxed">
+          <strong>醫療免責聲明：</strong>本網站所有醫療與衛教資訊僅供就醫參考，不能取代專科醫師之現場親自診察與診斷。各項療程效果因病患個別體質與病況程度而異，治療前請務必與專業醫師充分溝通。
+        </p>
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-2 text-slate-400">
+          <p>© 2026 光明診所 King's Clinic. All Rights Reserved. 官網網址：kingclinic.com.tw</p>
+          <div class="flex space-x-4 text-xs">
+            <a href="#" class="hover:text-slate-200">隱私權政策</a>
+            <span>•</span>
+            <a href="#" class="hover:text-slate-200">看診就醫須知</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== 12. FLOATING QUICK ACTION BAR (浮動聯絡按鈕) ==================== -->
+  <aside aria-label="快捷聯絡與回頂部" class="fixed bottom-6 right-6 z-40 flex flex-col items-end space-y-3">
+    <!-- Quick Phone Call -->
+    <a href="tel:02-2821-0197" class="flex items-center gap-2 bg-white text-brand-700 px-4 py-2.5 rounded-full shadow-lg border border-slate-200 hover:bg-brand-50 transition-all text-xs font-bold hover:scale-105 active:scale-95 group">
+      <div class="w-6 h-6 rounded-full bg-brand-600 text-white flex items-center justify-center">
+        <i data-lucide="phone" class="w-3.5 h-3.5"></i>
+      </div>
+      <span>(02) 2821-0197</span>
+    </a>
+
+    <!-- Book Appointment CTA -->
+    <a href="#booking" class="flex items-center gap-2 bg-brand-600 text-white px-4 py-2.5 rounded-full shadow-lg hover:bg-brand-700 transition-all text-xs font-bold hover:scale-105 active:scale-95">
+      <i data-lucide="calendar" class="w-4 h-4"></i>
+      <span>線上預約看診</span>
+    </a>
+
+    <!-- Back to top button -->
+    <button id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="hidden w-10 h-10 rounded-full bg-slate-800 text-white shadow-lg items-center justify-center hover:bg-slate-700 transition" aria-label="回到頁首">
+      <i data-lucide="chevron-up" class="w-5 h-5"></i>
+    </button>
+  </aside>
+
+  <!-- ==================== 13. JAVASCRIPT LOGIC ==================== -->
+  <script>
+    // Initialize Lucide Icons
+    document.addEventListener("DOMContentLoaded", () => {
+      lucide.createIcons();
+
+      // Set default minimum date for booking input to today
+      const today = new Date().toISOString().split('T')[0];
+      const dateInput = document.getElementById('date');
+      if (dateInput) {
+        dateInput.min = today;
+        dateInput.value = today;
+      }
+    });
+
+    // Mobile menu toggle logic
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu on clicking any link
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Back to top button visibility toggle
+    const backToTopBtn = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) {
+        backToTopBtn.classList.remove('hidden');
+        backToTopBtn.classList.add('flex');
+      } else {
+        backToTopBtn.classList.add('hidden');
+        backToTopBtn.classList.remove('flex');
+      }
+    });
+
+    // Handle Appointment Booking Submission
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      const submitBtn = document.getElementById('submit-btn');
+      const successBox = document.getElementById('booking-success');
+
+      // Visual feedback loading
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `
+        <span class="inline-block animate-spin mr-2">⟳</span>
+        正在處理預約申請...
+      `;
+
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = `
+          <i data-lucide="send" class="w-5 h-5"></i>
+          送出預約申請
+        `;
+        successBox.classList.remove('hidden');
+        lucide.createIcons();
+
+        // Scroll to success notification smoothly
+        successBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+        // Reset form
+        document.getElementById('appointment-form').reset();
+      }, 800);
+    }
+  </script>
+</body>
+</html>
