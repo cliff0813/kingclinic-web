@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 100" width="100%" height="100%" fill="none">
+  <defs>
+    <linearGradient id="primaryGradWhite" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14b8a6"/>
+      <stop offset="50%" stop-color="#0d9488"/>
+      <stop offset="100%" stop-color="#0891b2"/>
+    </linearGradient>
+
+    <linearGradient id="goldGradWhite" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#fde047"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ICON BADGE -->
+  <g transform="translate(10, 8)">
+    <rect x="0" y="0" width="84" height="84" rx="22" fill="url(#primaryGradWhite)"/>
+    <rect x="1" y="1" width="82" height="82" rx="21" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+
+    <circle cx="42" cy="42" r="32" fill="white" fill-opacity="0.1"/>
+    
+    <!-- 懸壺線條 -->
+    <path d="M42 16 C48 16 52 20 52 25 C52 29 49 32 46 34 C53 37 57 44 57 52 C57 63 50 70 42 70 C34 70 27 63 27 52 C27 44 31 37 38 34 C35 32 32 29 32 25 C32 20 36 16 42 16 Z" 
+          fill="none" 
+          stroke="url(#goldGradWhite)" 
+          stroke-width="2.2" 
+          stroke-linecap="round"
+          opacity="0.9"/>
+
+    <!-- 醫學雙翼 -->
+    <path d="M42 30 C34 22 21 24 16 32 C24 33 32 38 39 42 Z" fill="white" fill-opacity="0.98"/>
+    <path d="M42 30 C50 22 63 24 68 32 C60 33 52 38 45 42 Z" fill="white" fill-opacity="0.98"/>
+    
+    <path d="M41 36 C32 32 24 35 20 41 C27 41 34 44 39 48 Z" fill="#99f6e4" fill-opacity="0.9"/>
+    <path d="M43 36 C52 32 60 35 64 41 C57 41 50 44 45 48 Z" fill="#99f6e4" fill-opacity="0.9"/>
+
+    <!-- 中央支柱 -->
+    <line x1="42" y1="18" x2="42" y2="67" stroke="white" stroke-width="3" stroke-linecap="round"/>
+    
+    <circle cx="42" cy="18" r="4.5" fill="url(#goldGradWhite)"/>
+    <path d="M42 12 L43.5 16.5 L48 18 L43.5 19.5 L42 24 L40.5 19.5 L36 18 L40.5 16.5 Z" fill="#fde047"/>
+
+    <!-- 螺旋 -->
+    <path d="M36 34 C36 30 48 30 48 37 C48 44 35 43 35 50 C35 58 49 57 48 64" 
+          fill="none" 
+          stroke="url(#goldGradWhite)" 
+          stroke-width="3" 
+          stroke-linecap="round"/>
+  </g>
+
+  <!-- BRAND TYPOGRAPHY (WHITE FOR DARK BG) -->
+  <g transform="translate(112, 16)">
+    <text x="0" y="38" font-family="'Noto Sans TC', sans-serif" font-weight="900" font-size="34" fill="#ffffff" letter-spacing="2">
+      光明診所
+    </text>
+
+    <g transform="translate(154, 14)">
+      <rect x="0" y="0" width="108" height="24" rx="12" fill="#0f766e"/>
+      <rect x="0.5" y="0.5" width="107" height="23" rx="11.5" stroke="#2dd4bf" stroke-width="1"/>
+      <text x="54" y="16.5" font-family="'Noto Sans TC', sans-serif" font-weight="700" font-size="11" fill="#99f6e4" text-anchor="middle">
+        健保骨科復健
+      </text>
+    </g>
+
+    <text x="1" y="58" font-family="'Montserrat', 'Arial', sans-serif" font-weight="800" font-size="13" fill="#2dd4bf" letter-spacing="4">
+      KING'S CLINIC
+    </text>
+
+    <text x="1" y="74" font-family="'Noto Sans TC', sans-serif" font-weight="500" font-size="11" fill="#94a3b8" letter-spacing="1">
+      骨科・復健科・家醫外科 • 台北榮總合作
+    </text>
+  </g>
+</svg>

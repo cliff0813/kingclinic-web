@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 100" width="100%" height="100%" fill="none">
+  <defs>
+    <!-- 主漸層：深青碧到醫學青藍 -->
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f766e"/>
+      <stop offset="50%" stop-color="#0d9488"/>
+      <stop offset="100%" stop-color="#0891b2"/>
+    </linearGradient>
+
+    <!-- 金黃陽光漸層 (繼承舊LOGO黃色懸壺與光明之意) -->
+    <linearGradient id="goldGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#d97706"/>
+      <stop offset="50%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#fde047"/>
+    </linearGradient>
+
+    <!-- 翡翠光彩漸層 (象徵康復、再生與活力) -->
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+
+    <!-- 柔和陰影 -->
+    <filter id="badgeShadow" x="-10%" y="-10%" width="130%" height="130%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0d9488" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- ================= LOGO ICON BADGE (左側圖標) ================= -->
+  <g transform="translate(10, 8)" filter="url(#badgeShadow)">
+    <!-- 外層圓角盾形底座 (象徵信賴與守護) -->
+    <rect x="0" y="0" width="84" height="84" rx="22" fill="url(#primaryGrad)"/>
+    <rect x="1" y="1" width="82" height="82" rx="21" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+
+    <!-- 內部光輝背景紋理 (象徵「光明」拂照) -->
+    <circle cx="42" cy="42" r="32" fill="white" fill-opacity="0.06"/>
+    
+    <!-- 1. 懸壺濟世 (葫蘆輪廓現代化線條 - 保留舊LOGO精髓) -->
+    <path d="M42 16 C48 16 52 20 52 25 C52 29 49 32 46 34 C53 37 57 44 57 52 C57 63 50 70 42 70 C34 70 27 63 27 52 C27 44 31 37 38 34 C35 32 32 29 32 25 C32 20 36 16 42 16 Z" 
+          fill="none" 
+          stroke="url(#goldGrad)" 
+          stroke-width="2.2" 
+          stroke-dasharray="80" 
+          stroke-dashoffset="0"
+          stroke-linecap="round"
+          opacity="0.85"/>
+
+    <!-- 2. 醫學雙翼 / 光芒展翅 (象徵康復新生與活力) -->
+    <path d="M42 30 C34 22 21 24 16 32 C24 33 32 38 39 42 Z" fill="white" fill-opacity="0.95"/>
+    <path d="M42 30 C50 22 63 24 68 32 C60 33 52 38 45 42 Z" fill="white" fill-opacity="0.95"/>
+    
+    <!-- 次層羽翼光束 -->
+    <path d="M41 36 C32 32 24 35 20 41 C27 41 34 44 39 48 Z" fill="#99f6e4" fill-opacity="0.9"/>
+    <path d="M43 36 C52 32 60 35 64 41 C57 41 50 44 45 48 Z" fill="#99f6e4" fill-opacity="0.9"/>
+
+    <!-- 3. 中央神杖 / 脊椎骨骼關節支柱 (象徵骨科與復健) -->
+    <line x1="42" y1="18" x2="42" y2="67" stroke="white" stroke-width="3" stroke-linecap="round"/>
+    
+    <!-- 頂端皇冠十字十字星 (象徵 King's Clinic 王者品質與醫療標誌) -->
+    <circle cx="42" cy="18" r="4.5" fill="url(#goldGrad)"/>
+    <path d="M42 12 L43.5 16.5 L48 18 L43.5 19.5 L42 24 L40.5 19.5 L36 18 L40.5 16.5 Z" fill="#fde047"/>
+
+    <!-- 4. 纏繞蛇杖 / 關節動態修復螺旋 (阿斯克勒庇俄斯醫療螺旋) -->
+    <path d="M36 34 C36 30 48 30 48 37 C48 44 35 43 35 50 C35 58 49 57 48 64" 
+          fill="none" 
+          stroke="url(#goldGrad)" 
+          stroke-width="3" 
+          stroke-linecap="round"/>
+  </g>
+
+  <!-- ================= BRAND TYPOGRAPHY (右側字體) ================= -->
+  <!-- 中文主標：光明診所 -->
+  <g transform="translate(112, 16)">
+    <!-- 品牌主名稱 -->
+    <text x="0" y="38" font-family="'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif" font-weight="900" font-size="34" fill="#0f172a" letter-spacing="2">
+      光明診所
+    </text>
+
+    <!-- 專科標籤 Badge -->
+    <g transform="translate(154, 14)">
+      <rect x="0" y="0" width="108" height="24" rx="12" fill="#ccfbf1"/>
+      <rect x="0.5" y="0.5" width="107" height="23" rx="11.5" stroke="#0d9488" stroke-width="1"/>
+      <text x="54" y="16.5" font-family="'Noto Sans TC', sans-serif" font-weight="700" font-size="11" fill="#0f766e" text-anchor="middle">
+        健保骨科復健
+      </text>
+    </g>
+
+    <!-- 英文副標：KING'S CLINIC -->
+    <text x="1" y="58" font-family="'Montserrat', 'Arial', sans-serif" font-weight="800" font-size="13" fill="#0d9488" letter-spacing="4">
+      KING'S CLINIC
+    </text>
+
+    <!-- 次副標：骨科・復健・再生醫療・台北榮總社區醫療群 -->
+    <text x="1" y="74" font-family="'Noto Sans TC', sans-serif" font-weight="500" font-size="11" fill="#64748b" letter-spacing="1">
+      骨科・復健科・家醫外科 • 台北榮總合作
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%" fill="none">
+  <defs>
+    <linearGradient id="iconPrimaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f766e"/>
+      <stop offset="50%" stop-color="#0d9488"/>
+      <stop offset="100%" stop-color="#0891b2"/>
+    </linearGradient>
+
+    <linearGradient id="iconGoldGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#d97706"/>
+      <stop offset="50%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#fde047"/>
+    </linearGradient>
+
+    <filter id="iconShadow" x="-10%" y="-10%" width="130%" height="130%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#0d9488" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#iconShadow)">
+    <rect x="8" y="8" width="84" height="84" rx="24" fill="url(#iconPrimaryGrad)"/>
+    <rect x="9" y="9" width="82" height="82" rx="23" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+
+    <circle cx="50" cy="50" r="32" fill="white" fill-opacity="0.08"/>
+    
+    <!-- 懸壺輪廓 (葫蘆) -->
+    <path d="M50 24 C56 24 60 28 60 33 C60 37 57 40 54 42 C61 45 65 52 65 60 C65 71 58 78 50 78 C42 78 35 71 35 60 C35 52 39 45 46 42 C43 40 40 37 40 33 C40 28 44 24 50 24 Z" 
+          fill="none" 
+          stroke="url(#iconGoldGrad)" 
+          stroke-width="2.4" 
+          stroke-linecap="round"
+          opacity="0.9"/>
+
+    <!-- 雙翼 -->
+    <path d="M50 38 C42 30 29 32 24 40 C32 41 40 46 47 50 Z" fill="white" fill-opacity="0.95"/>
+    <path d="M50 38 C58 30 71 32 76 40 C68 41 60 46 53 50 Z" fill="white" fill-opacity="0.95"/>
+    
+    <path d="M49 44 C40 40 32 43 28 49 C35 49 42 52 47 56 Z" fill="#99f6e4" fill-opacity="0.9"/>
+    <path d="M51 44 C60 40 68 43 72 49 C65 49 58 52 53 56 Z" fill="#99f6e4" fill-opacity="0.9"/>
+
+    <!-- 脊椎神杖主幹 -->
+    <line x1="50" y1="26" x2="50" y2="75" stroke="white" stroke-width="3.2" stroke-linecap="round"/>
+    
+    <!-- 皇冠星芒頂飾 -->
+    <circle cx="50" cy="25" r="5" fill="url(#iconGoldGrad)"/>
+    <path d="M50 19 L51.5 23.5 L56 25 L51.5 26.5 L50 31 L48.5 26.5 L44 25 L48.5 23.5 Z" fill="#fde047"/>
+
+    <!-- 螺旋修復蛇杖 -->
+    <path d="M44 42 C44 38 56 38 56 45 C56 52 43 51 43 58 C43 66 57 65 56 72" 
+          fill="none" 
+          stroke="url(#iconGoldGrad)" 
+          stroke-width="3" 
+          stroke-linecap="round"/>
+  </g>
+</svg>
