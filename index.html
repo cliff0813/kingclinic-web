@@ -777,6 +777,8 @@
             </table>
           </div>
 
+          <div id="timetable-closures" class="hidden px-4 py-2.5 bg-amber-50 border-t border-amber-200 text-xs font-semibold text-amber-800"></div>
+
           <!-- Schedule Notes -->
           <div class="bg-slate-50 p-4 border-t border-slate-200 text-xs text-slate-600 flex flex-col sm:flex-row justify-between items-center gap-3">
             <div class="flex flex-wrap items-center gap-4">
@@ -1014,12 +1016,17 @@
               </div>
               <div>
                 <h3 class="text-xl font-bold text-slate-900">光明診所 線上預約掛號單</h3>
-                <p class="text-xs text-slate-500">送出表單後，門診同仁將於看診時段內與您電話確認預約資訊</p>
+                <p class="text-xs text-slate-500">開放預約未來 7 天內門診（當日不開放），送出後立即取得預約代碼</p>
               </div>
             </div>
 
+            <div class="flex gap-2 mb-6 p-1 bg-slate-100 rounded-xl text-sm font-bold">
+              <button type="button" data-tab="book" class="flex-1 py-2 rounded-lg bg-brand-600 text-white transition">線上掛號</button>
+              <button type="button" data-tab="lookup" class="flex-1 py-2 rounded-lg text-slate-600 transition">查詢／取消預約</button>
+            </div>
+
             <!-- Form -->
-            <form id="appointment-form" class="space-y-5" onsubmit="handleFormSubmit(event)">
+            <div id="panel-book"><form id="appointment-form" class="space-y-5">
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <!-- Name -->
                 <div>
@@ -1035,9 +1042,17 @@
                   <label for="phone" class="block text-xs font-bold text-slate-700 uppercase mb-1.5">
                     聯絡電話 <span class="text-rose-500">*</span>
                   </label>
-                  <input type="tel" id="phone" required placeholder="例: 0912-345-678" 
+                  <input type="tel" id="phone" required inputmode="numeric" placeholder="手機號碼，例: 0912345678" 
                          class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm transition">
                 </div>
+              </div>
+
+              <div>
+                <label for="email" class="block text-xs font-bold text-slate-700 uppercase mb-1.5">
+                  電子郵件 <span class="text-slate-400 normal-case font-normal">（選填）</span>
+                </label>
+                <input type="email" id="email" placeholder="填寫後將寄送預約確認信，忘記代碼時可由信箱找回"
+                       class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm transition">
               </div>
 
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -1073,10 +1088,11 @@
                 <!-- Preferred Date -->
                 <div>
                   <label for="date" class="block text-xs font-bold text-slate-700 uppercase mb-1.5">
-                    希望看診日期 <span class="text-rose-500">*</span>
+                    看診日期（未來 7 天內） <span class="text-rose-500">*</span>
                   </label>
-                  <input type="date" id="date" required 
-                         class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm transition text-slate-700">
+                  <select id="date" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm transition bg-white text-slate-700">
+                    <option value="">載入中…</option>
+                  </select>
                 </div>
 
                 <!-- Preferred Time Slot -->
@@ -1085,9 +1101,7 @@
                     希望時段 <span class="text-rose-500">*</span>
                   </label>
                   <select id="timeslot" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm transition bg-white text-slate-700">
-                    <option value="morning">早診 (週一、三、六 09:00 - 12:00)</option>
-                    <option value="afternoon">午診 (週一、三、五 15:00 - 18:00)</option>
-                    <option value="evening">晚診 (週一至週五 17:00 / 18:00 - 20:00)</option>
+                    <option value="">請先選擇日期</option>
                   </select>
                 </div>
               </div>
@@ -1112,20 +1126,45 @@
               <!-- Submit Button -->
               <button type="submit" id="submit-btn" class="w-full py-3.5 px-6 rounded-xl font-bold text-white bg-brand-600 hover:bg-brand-700 shadow-md shadow-brand-600/30 hover:shadow-lg transition-all flex items-center justify-center gap-2 text-base">
                 <i data-lucide="send" class="w-5 h-5"></i>
-                送出預約申請
+                確認預約
               </button>
             </form>
+            <div id="book-msg" class="hidden"></div>
+            <div id="book-result" class="hidden mt-6"></div>
+            </div>
 
-            <!-- Success Alert Notification -->
-            <div id="booking-success" class="hidden mt-6 p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800">
-              <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center shrink-0">
-                  <i data-lucide="check" class="w-5 h-5"></i>
+            <div id="panel-lookup" class="hidden">
+              <form id="lookup-form" class="space-y-5">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label for="lookup-code" class="block text-xs font-bold text-slate-700 uppercase mb-1.5">預約代碼（6 位數字）</label>
+                    <input type="text" id="lookup-code" required inputmode="numeric" maxlength="6" pattern="\d{6}"
+                           class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm transition">
+                  </div>
+                  <div>
+                    <label for="lookup-phone" class="block text-xs font-bold text-slate-700 uppercase mb-1.5">手機號碼</label>
+                    <input type="tel" id="lookup-phone" required inputmode="numeric" placeholder="0912345678"
+                           class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm transition">
+                  </div>
                 </div>
-                <div>
-                  <h4 class="font-bold text-sm">預約單已成功送出！</h4>
-                  <p class="text-xs text-emerald-700 mt-0.5">感謝您的填寫。光明診所同仁將儘速檢視您的時段，並以電話向您確認報到時間。若有急性疼痛需求，亦可直接來電 (02) 2821-0197。</p>
-                </div>
+                <button type="submit" id="lookup-btn" class="w-full py-3 rounded-xl font-bold text-white bg-brand-600 hover:bg-brand-700 transition">查詢預約</button>
+              </form>
+              <div id="lookup-msg" class="hidden"></div>
+              <div id="lookup-result" class="hidden mt-6"></div>
+
+              <div class="mt-8 pt-6 border-t border-slate-200">
+                <button type="button" id="resend-toggle" class="text-sm font-bold text-brand-600 hover:underline">忘記預約代碼？</button>
+                <form id="resend-form" class="hidden mt-4 space-y-4">
+                  <p class="text-xs text-slate-500">輸入預約時的手機與電子郵件，系統會將預約資料重寄至該信箱。未填寫電子郵件者請致電 (02) 2821-0197。</p>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <input type="tel" id="resend-phone" required inputmode="numeric" placeholder="手機號碼"
+                           class="px-4 py-2.5 rounded-xl border border-slate-300 outline-none text-sm focus:border-brand-500">
+                    <input type="email" id="resend-email" required placeholder="預約時填寫的電子郵件"
+                           class="px-4 py-2.5 rounded-xl border border-slate-300 outline-none text-sm focus:border-brand-500">
+                  </div>
+                  <button type="submit" id="resend-btn" class="px-5 py-2.5 rounded-xl font-bold text-white bg-slate-700 hover:bg-slate-800 transition text-sm">寄送預約資料</button>
+                  <div id="resend-msg" class="hidden"></div>
+                </form>
               </div>
             </div>
 
@@ -1249,18 +1288,12 @@
   </aside>
 
   <!-- ==================== 13. JAVASCRIPT LOGIC ==================== -->
+  <script src="assets/config.js"></script>
+  <script src="assets/booking.js" defer></script>
   <script>
     // Initialize Lucide Icons
     document.addEventListener("DOMContentLoaded", () => {
       lucide.createIcons();
-
-      // Set default minimum date for booking input to today
-      const today = new Date().toISOString().split('T')[0];
-      const dateInput = document.getElementById('date');
-      if (dateInput) {
-        dateInput.min = today;
-        dateInput.value = today;
-      }
     });
 
     // Mobile menu toggle logic
@@ -1290,36 +1323,6 @@
         backToTopBtn.classList.remove('flex');
       }
     });
-
-    // Handle Appointment Booking Submission
-    function handleFormSubmit(event) {
-      event.preventDefault();
-      const submitBtn = document.getElementById('submit-btn');
-      const successBox = document.getElementById('booking-success');
-
-      // Visual feedback loading
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = `
-        <span class="inline-block animate-spin mr-2">⟳</span>
-        正在處理預約申請...
-      `;
-
-      setTimeout(() => {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = `
-          <i data-lucide="send" class="w-5 h-5"></i>
-          送出預約申請
-        `;
-        successBox.classList.remove('hidden');
-        lucide.createIcons();
-
-        // Scroll to success notification smoothly
-        successBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-        // Reset form
-        document.getElementById('appointment-form').reset();
-      }, 800);
-    }
   </script>
 </body>
 </html>
