@@ -57,3 +57,83 @@ test('buildSchedule 排除特殊休診日與名額 0 的時段', () => {
   const wed = L.buildSchedule(rows, [], NOW)[1];
   assert.deepEqual(wed.slots.map(s => s.timeSlot), ['晚診']);
 });
+
+function req(over) {
+  return Object.assign({
+    date: '2026-11-03', slotKey: 'evening', name: '王大明',
+    phone: '0912-345-678', email: '', department: 'arthritis', notes: ''
+  }, over || {});
+}
+
+test('normalizePhone / isValidPhone / isValidEmail', () => {
+  assert.equal(L.normalizePhone('0912-345-678'), '0912345678');
+  assert.equal(L.isValidPhone('0912345678'), true);
+  assert.equal(L.isValidPhone('0212345678'), false);
+  assert.equal(L.isValidEmail(''), true);
+  assert.equal(L.isValidEmail('a@b.co'), true);
+  assert.equal(L.isValidEmail('abc'), false);
+});
+
+test('validateBooking 通過時回傳時段與項目名稱', () => {
+  const r = L.validateBooking(req(), L.DEFAULT_SCHEDULE, [], NOW);
+  assert.equal(r.ok, true);
+  assert.equal(r.slot.timeSlot, '晚診');
+  assert.equal(r.phone, '0912345678');
+  assert.equal(r.departmentLabel, '退化性關節炎評估 / 治療');
+});
+
+test('validateBooking 拒絕當日與超過 7 天', () => {
+  const today = L.validateBooking(req({ date: '2026-11-02' }), L.DEFAULT_SCHEDULE, [], NOW);
+  assert.equal(today.ok, false);
+  assert.match(today.error, /不開放/);
+  const far = L.validateBooking(req({ date: '2026-11-10' }), L.DEFAULT_SCHEDULE, [], NOW);
+  assert.equal(far.ok, false);
+});
+
+test('validateBooking 拒絕不開診時段（週二無早診）', () => {
+  const r = L.validateBooking(req({ slotKey: 'morning' }), L.DEFAULT_SCHEDULE, [], NOW);
+  assert.equal(r.ok, false);
+  assert.match(r.error, /不開診/);
+});
+
+test('validateBooking 同日同手機不可重複，已取消者不算', () => {
+  const dup = L.validateBooking(req(), L.DEFAULT_SCHEDULE,
+    [booking({ phone: '0912345678', timeSlot: '晚診' })], NOW);
+  assert.equal(dup.ok, false);
+  assert.match(dup.error, /不可重複預約/);
+  const ok = L.validateBooking(req(), L.DEFAULT_SCHEDULE,
+    [booking({ phone: '0912345678', status: '已取消' })], NOW);
+  assert.equal(ok.ok, true);
+});
+
+test('validateBooking 額滿時拒絕', () => {
+  const rows = L.DEFAULT_SCHEDULE.map(r => Object.assign({}, r, { maxQuota: 1 }));
+  const r = L.validateBooking(req(), rows, [booking({ phone: '0999999999' })], NOW);
+  assert.equal(r.ok, false);
+  assert.match(r.error, /額滿/);
+});
+
+test('validateBooking 拒絕錯誤輸入', () => {
+  assert.equal(L.validateBooking(req({ name: ' ' }), L.DEFAULT_SCHEDULE, [], NOW).ok, false);
+  assert.equal(L.validateBooking(req({ phone: '123' }), L.DEFAULT_SCHEDULE, [], NOW).ok, false);
+  assert.equal(L.validateBooking(req({ email: 'x' }), L.DEFAULT_SCHEDULE, [], NOW).ok, false);
+  assert.equal(L.validateBooking(req({ department: 'nope' }), L.DEFAULT_SCHEDULE, [], NOW).ok, false);
+});
+
+test('nextSequence 含已取消紀錄，避免號碼重複', () => {
+  const bs = [
+    booking({ sequence: 1 }),
+    booking({ code: '100002', sequence: 2, status: '已取消' }),
+    booking({ code: '100003', sequence: 5, date: '2026-11-04' })
+  ];
+  assert.equal(L.nextSequence(bs, '2026-11-03', '晚診'), 3);
+  assert.equal(L.nextSequence([], '2026-11-03', '晚診'), 1);
+});
+
+test('generateCode 為 6 位數字且避開已存在代碼', () => {
+  const seq = [0, 0, 0.5];
+  let i = 0;
+  const code = L.generateCode(['100000'], () => seq[i++]);
+  assert.match(code, /^\d{6}$/);
+  assert.equal(code, String(100000 + Math.floor(0.5 * 900000)));
+});

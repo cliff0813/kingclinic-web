@@ -88,11 +88,81 @@ function buildSchedule(rows, bookings, now) {
   return days;
 }
 
+function normalizePhone(raw) {
+  return String(raw || '').replace(/\D/g, '');
+}
+
+function isValidPhone(p) {
+  return /^09\d{8}$/.test(p);
+}
+
+function isValidEmail(e) {
+  return e === '' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+}
+
+// 驗證掛號請求；回傳 {ok:true, slot, phone, email, name, departmentLabel} 或 {ok:false, error}
+function validateBooking(req, rows, bookings, now) {
+  var name = String(req.name || '').trim();
+  var phone = normalizePhone(req.phone);
+  var email = String(req.email || '').trim().toLowerCase();
+  var deptLabel = DEPARTMENTS[req.department];
+
+  if (!name) return { ok: false, error: '請輸入姓名' };
+  if (!isValidPhone(phone)) return { ok: false, error: '請輸入正確的手機號碼（10 碼，09 開頭）' };
+  if (!isValidEmail(email)) return { ok: false, error: '電子郵件格式不正確' };
+  if (!deptLabel) return { ok: false, error: '請選擇預約項目' };
+
+  var today = taipeiToday(now);
+  var date = String(req.date || '');
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || date <= today) {
+    return { ok: false, error: '當日不開放線上掛號，請選擇明日起的日期' };
+  }
+  if (date > addDays(today, WINDOW_DAYS)) {
+    return { ok: false, error: '僅開放預約未來 ' + WINDOW_DAYS + ' 天內的門診' };
+  }
+
+  var day = buildSchedule(rows, bookings, now).filter(function (d) { return d.date === date; })[0];
+  var slot = day && day.slots.filter(function (s) { return s.slotKey === req.slotKey; })[0];
+  if (!slot) return { ok: false, error: '該日期此時段不開診' };
+
+  var dup = bookings.some(function (b) {
+    return isActive(b) && b.date === date && b.phone === phone;
+  });
+  if (dup) return { ok: false, error: '您在此日期已有預約掛號紀錄，不可重複預約' };
+
+  if (slot.isFull) return { ok: false, error: '該時段已額滿' };
+
+  return { ok: true, slot: slot, phone: phone, email: email, name: name, departmentLabel: deptLabel };
+}
+
+// 同日同時段最大看診號 + 1（含已取消紀錄，確保號碼不重複）
+function nextSequence(bookings, date, timeSlot) {
+  var max = 0;
+  bookings.forEach(function (b) {
+    if (b.date === date && b.timeSlot === timeSlot && Number(b.sequence) > max) max = Number(b.sequence);
+  });
+  return max + 1;
+}
+
+// 產生不重複的 6 位數字代碼；rand 預設 Math.random，測試時可注入
+function generateCode(existingCodes, rand) {
+  rand = rand || Math.random;
+  var used = {};
+  existingCodes.forEach(function (c) { used[c] = true; });
+  for (var i = 0; i < 1000; i++) {
+    var code = String(100000 + Math.floor(rand() * 900000));
+    if (!used[code]) return code;
+  }
+  throw new Error('無法產生不重複的預約代碼');
+}
+
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = {
     STATUS_OK: STATUS_OK, STATUS_CANCELLED: STATUS_CANCELLED, WINDOW_DAYS: WINDOW_DAYS,
     DEPARTMENTS: DEPARTMENTS, DEFAULT_SCHEDULE: DEFAULT_SCHEDULE,
     taipeiToday: taipeiToday, addDays: addDays, isoDow: isoDow,
-    parseClosed: parseClosed, isActive: isActive, buildSchedule: buildSchedule
+    parseClosed: parseClosed, isActive: isActive,     buildSchedule: buildSchedule,
+    normalizePhone: normalizePhone, isValidPhone: isValidPhone, isValidEmail: isValidEmail,
+    validateBooking: validateBooking, nextSequence: nextSequence, generateCode: generateCode
   };
 }
