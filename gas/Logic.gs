@@ -92,6 +92,11 @@ function normalizePhone(raw) {
   return String(raw || '').replace(/\D/g, '');
 }
 
+// 比對用：去掉非數字與開頭的 0，避免試算表吃掉前導 0 造成比對失敗
+function phoneKey(raw) {
+  return normalizePhone(raw).replace(/^0+/, '');
+}
+
 function isValidPhone(p) {
   return /^09\d{8}$/.test(p);
 }
@@ -126,7 +131,7 @@ function validateBooking(req, rows, bookings, now) {
   if (!slot) return { ok: false, error: '該日期此時段不開診' };
 
   var dup = bookings.some(function (b) {
-    return isActive(b) && b.date === date && b.phone === phone;
+    return isActive(b) && b.date === date && phoneKey(b.phone) === phoneKey(phone);
   });
   if (dup) return { ok: false, error: '您在此日期已有預約掛號紀錄，不可重複預約' };
 
@@ -160,7 +165,7 @@ function findBooking(bookings, code, phone) {
   var p = normalizePhone(phone);
   var c = String(code || '').trim();
   for (var i = 0; i < bookings.length; i++) {
-    if (bookings[i].code === c && bookings[i].phone === p) return bookings[i];
+    if (bookings[i].code === c && phoneKey(bookings[i].phone) === phoneKey(p)) return bookings[i];
   }
   return null;
 }
@@ -183,7 +188,7 @@ function findResendTargets(bookings, phone, email, today) {
   var e = String(email || '').trim().toLowerCase();
   if (!e) return [];
   return bookings.filter(function (b) {
-    return isActive(b) && b.phone === p && String(b.email || '').toLowerCase() === e && b.date >= today;
+    return isActive(b) && phoneKey(b.phone) === phoneKey(p) && String(b.email || '').toLowerCase() === e && b.date >= today;
   });
 }
 
@@ -208,7 +213,7 @@ if (typeof module !== 'undefined' && module.exports) {
     DEPARTMENTS: DEPARTMENTS, DEFAULT_SCHEDULE: DEFAULT_SCHEDULE,
     taipeiToday: taipeiToday, addDays: addDays, isoDow: isoDow,
     parseClosed: parseClosed, isActive: isActive,     buildSchedule: buildSchedule,
-    normalizePhone: normalizePhone, isValidPhone: isValidPhone, isValidEmail: isValidEmail,
+    normalizePhone: normalizePhone, phoneKey: phoneKey, isValidPhone: isValidPhone, isValidEmail: isValidEmail,
     validateBooking: validateBooking, nextSequence: nextSequence, generateCode: generateCode,
     findBooking: findBooking, canCancel: canCancel, findResendTargets: findResendTargets, listClosures: listClosures
   };

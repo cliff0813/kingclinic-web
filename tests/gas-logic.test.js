@@ -145,6 +145,12 @@ test('findBooking 需代碼與手機皆相符', () => {
   assert.equal(L.findBooking(bs, '999999', '0912345678'), null);
 });
 
+test('findBooking 容忍試算表吃掉前導 0 的電話', () => {
+  const bs = [booking({ code: '123456', phone: '912345678' })];
+  assert.ok(L.findBooking(bs, '123456', '0912345678'));
+  assert.equal(L.findBooking(bs, '123456', '0900000000'), null);
+});
+
 test('canCancel 僅在時段開始前且狀態為預約成功', () => {
   const b = booking({ date: '2026-11-03', timeSlot: '晚診' }); // 週二 17:00 開始
   const before = new Date('2026-11-03T08:59:00Z'); // 16:59 台北
