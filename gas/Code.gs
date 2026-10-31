@@ -65,12 +65,20 @@ function stamp_(now) {
   return Utilities.formatDate(now, 'Asia/Taipei', 'yyyy-MM-dd HH:mm:ss');
 }
 
+// 避免試算表公式注入：以 ' 前綴中和 = + - @ 開頭的文字
+function safeText_(s) {
+  s = String(s == null ? '' : s);
+  return /^[=+\-@]/.test(s) ? "'" + s : s;
+}
+
 function sendMail_(to, subject, body) {
-  if (!to) return;
+  if (!to) return false;
   try {
     MailApp.sendEmail({ to: to, subject: subject, body: body, name: '光明診所' });
+    return true;
   } catch (err) {
     console.error('sendMail failed: ' + err);
+    return false;
   }
 }
 
@@ -121,15 +129,16 @@ function handleCreateBooking_(req, now) {
       notes: String(req.notes || '').slice(0, 300), status: STATUS_OK,
       createdAt: stamp_(now), cancelledAt: '', email: v.email
     };
-    ss_().getSheetByName(SHEET_APPT).appendRow([b.code, b.date, b.timeSlot, b.sequence, b.name,
-      b.phone, b.department, b.doctor, b.notes, b.status, b.createdAt, b.cancelledAt, b.email]);
+    ss_().getSheetByName(SHEET_APPT).appendRow([b.code, b.date, b.timeSlot,     b.sequence, safeText_(b.name),
+          b.phone, b.department, b.doctor, safeText_(b.notes), b.status, b.createdAt, b.cancelledAt,
+          safeText_(b.email)]);
     SpreadsheetApp.flush();
 
-    sendMail_(b.email, '【光明診所】預約成功通知 ' + b.date + ' ' + b.timeSlot, bookingMailBody_(b));
+    var emailSent = sendMail_(b.email, '【光明診所】預約成功通知 ' + b.date + ' ' + b.timeSlot, bookingMailBody_(b));
     return {
       success: true, appointmentCode: code, sequenceNumber: seq, date: b.date,
       timeSlot: b.timeSlot + ' (' + v.slot.timeRange + ')', doctor: b.doctor,
-      emailSent: !!b.email
+      emailSent: emailSent
     };
   } finally {
     lock.releaseLock();
@@ -175,11 +184,17 @@ function handleResendBooking_(req, now) {
   }
   var cache = CacheService.getScriptCache();
   var key = 'resend_' + phone;
-  var count = Number(cache.get(key) || 0);
-  if (count >= RESEND_LIMIT) {
-    return { success: false, error: '查詢次數過多，請稍後再試或致電 ' + CLINIC_PHONE };
+  var lock = LockService.getScriptLock();
+  lock.waitLock(5000);
+  try {
+    var count = Number(cache.get(key) || 0);
+    if (count >= RESEND_LIMIT) {
+      return { success: false, error: '查詢次數過多，請稍後再試或致電 ' + CLINIC_PHONE };
+    }
+    cache.put(key, String(count + 1), RESEND_WINDOW_SEC);
+  } finally {
+    lock.releaseLock();
   }
-  cache.put(key, String(count + 1), RESEND_WINDOW_SEC);
 
   var targets = findResendTargets(readBookings_(), phone, email, taipeiToday(now));
   if (targets.length) {
