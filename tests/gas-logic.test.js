@@ -137,3 +137,38 @@ test('generateCode 為 6 位數字且避開已存在代碼', () => {
   assert.match(code, /^\d{6}$/);
   assert.equal(code, String(100000 + Math.floor(0.5 * 900000)));
 });
+
+test('findBooking 需代碼與手機皆相符', () => {
+  const bs = [booking({ code: '123456', phone: '0912345678' })];
+  assert.ok(L.findBooking(bs, '123456', '0912-345-678'));
+  assert.equal(L.findBooking(bs, '123456', '0900000000'), null);
+  assert.equal(L.findBooking(bs, '999999', '0912345678'), null);
+});
+
+test('canCancel 僅在時段開始前且狀態為預約成功', () => {
+  const b = booking({ date: '2026-11-03', timeSlot: '晚診' }); // 週二 17:00 開始
+  const before = new Date('2026-11-03T08:59:00Z'); // 16:59 台北
+  const after = new Date('2026-11-03T09:00:00Z');  // 17:00 台北
+  assert.equal(L.canCancel(b, L.DEFAULT_SCHEDULE, before), true);
+  assert.equal(L.canCancel(b, L.DEFAULT_SCHEDULE, after), false);
+  assert.equal(L.canCancel(booking({ status: '已取消' }), L.DEFAULT_SCHEDULE, before), false);
+});
+
+test('findResendTargets 依手機與 Email 比對未過期的有效預約', () => {
+  const bs = [
+    booking({ phone: '0912345678', email: 'wang@example.com', date: '2026-11-03' }),
+    booking({ code: '100002', phone: '0912345678', email: 'wang@example.com', date: '2026-10-30' }),
+    booking({ code: '100003', phone: '0912345678', email: 'wang@example.com', status: '已取消' }),
+    booking({ code: '100004', phone: '0912345678', email: 'other@example.com' })
+  ];
+  const r = L.findResendTargets(bs, '0912-345-678', 'WANG@example.com', '2026-11-02');
+  assert.deepEqual(r.map(b => b.code), ['100001']);
+  assert.deepEqual(L.findResendTargets(bs, '0912345678', '', '2026-11-02'), []);
+});
+
+test('listClosures 列出 D+1~D+7 內被特殊休診的時段', () => {
+  const rows = L.DEFAULT_SCHEDULE.map(r =>
+    r.dayOfWeek === 3 && r.slotKey === 'morning'
+      ? Object.assign({}, r, { closedDates: '2026-11-04, 2026-11-11' }) : r);
+  assert.deepEqual(L.listClosures(rows, NOW), [{ date: '2026-11-04', timeSlot: '早診' }]);
+});

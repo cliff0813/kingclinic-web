@@ -156,6 +156,52 @@ function generateCode(existingCodes, rand) {
   throw new Error('無法產生不重複的預約代碼');
 }
 
+function findBooking(bookings, code, phone) {
+  var p = normalizePhone(phone);
+  var c = String(code || '').trim();
+  for (var i = 0; i < bookings.length; i++) {
+    if (bookings[i].code === c && bookings[i].phone === p) return bookings[i];
+  }
+  return null;
+}
+
+// 診次開始前可取消（台北時間）
+function canCancel(booking, rows, now) {
+  if (!isActive(booking)) return false;
+  var dow = isoDow(booking.date);
+  var row = rows.filter(function (r) {
+    return Number(r.dayOfWeek) === dow && r.timeSlot === booking.timeSlot;
+  })[0];
+  if (!row) return false;
+  var hhmm = String(row.startTime).length === 4 ? '0' + row.startTime : String(row.startTime);
+  var start = new Date(booking.date + 'T' + hhmm + ':00+08:00').getTime();
+  return now.getTime() < start;
+}
+
+function findResendTargets(bookings, phone, email, today) {
+  var p = normalizePhone(phone);
+  var e = String(email || '').trim().toLowerCase();
+  if (!e) return [];
+  return bookings.filter(function (b) {
+    return isActive(b) && b.phone === p && String(b.email || '').toLowerCase() === e && b.date >= today;
+  });
+}
+
+function listClosures(rows, now) {
+  var today = taipeiToday(now);
+  var out = [];
+  for (var i = 1; i <= WINDOW_DAYS; i++) {
+    var date = addDays(today, i);
+    var dow = isoDow(date);
+    rows.forEach(function (r) {
+      if (Number(r.dayOfWeek) === dow && parseClosed(r.closedDates).indexOf(date) >= 0) {
+        out.push({ date: date, timeSlot: r.timeSlot });
+      }
+    });
+  }
+  return out;
+}
+
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = {
     STATUS_OK: STATUS_OK, STATUS_CANCELLED: STATUS_CANCELLED, WINDOW_DAYS: WINDOW_DAYS,
@@ -163,6 +209,7 @@ if (typeof module !== 'undefined' && module.exports) {
     taipeiToday: taipeiToday, addDays: addDays, isoDow: isoDow,
     parseClosed: parseClosed, isActive: isActive,     buildSchedule: buildSchedule,
     normalizePhone: normalizePhone, isValidPhone: isValidPhone, isValidEmail: isValidEmail,
-    validateBooking: validateBooking, nextSequence: nextSequence, generateCode: generateCode
+    validateBooking: validateBooking, nextSequence: nextSequence, generateCode: generateCode,
+    findBooking: findBooking, canCancel: canCancel, findResendTargets: findResendTargets, listClosures: listClosures
   };
 }
