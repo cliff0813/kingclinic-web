@@ -45,6 +45,12 @@ function readSchedule_() {
   });
 }
 
+// 相容舊資料：試算表若把電話轉成數字，開頭的 0 會遺失（9XXXXXXXX → 09XXXXXXXX）
+function restorePhone_(v) {
+  var s = String(v || '');
+  return /^9\d{8}$/.test(s) ? '0' + s : s;
+}
+
 function readBookings_() {
   var sh = ss_().getSheetByName(SHEET_APPT);
   var vals = sh.getDataRange().getDisplayValues();
@@ -54,7 +60,7 @@ function readBookings_() {
     if (!r[0]) continue;
     out.push({
       row: i + 1, code: r[0], date: r[1], timeSlot: r[2], sequence: Number(r[3]),
-      name: r[4], phone: r[5], department: r[6], doctor: r[7], notes: r[8],
+      name: r[4], phone: restorePhone_(r[5]), department: r[6], doctor: r[7], notes: r[8],
       status: r[9], createdAt: r[10], cancelledAt: r[11], email: r[12]
     });
   }
@@ -129,9 +135,13 @@ function handleCreateBooking_(req, now) {
       notes: String(req.notes || '').slice(0, 300), status: STATUS_OK,
       createdAt: stamp_(now), cancelledAt: '', email: v.email
     };
-    ss_().getSheetByName(SHEET_APPT).appendRow([b.code, b.date, b.timeSlot,     b.sequence, safeText_(b.name),
-          b.phone, b.department, b.doctor, safeText_(b.notes), b.status, b.createdAt, b.cancelledAt,
-          safeText_(b.email)]);
+    var apptSheet = ss_().getSheetByName(SHEET_APPT);
+    var newRow = apptSheet.getLastRow() + 1;
+    var rowRange = apptSheet.getRange(newRow, 1, 1, 13);
+    rowRange.setNumberFormat('@');
+    rowRange.setValues([[b.code, b.date, b.timeSlot, b.sequence, safeText_(b.name),
+      b.phone, b.department, b.doctor, safeText_(b.notes), b.status, b.createdAt, b.cancelledAt,
+      safeText_(b.email)]]);
     SpreadsheetApp.flush();
 
     var emailSent = sendMail_(b.email, '【光明診所】預約成功通知 ' + b.date + ' ' + b.timeSlot, bookingMailBody_(b));
