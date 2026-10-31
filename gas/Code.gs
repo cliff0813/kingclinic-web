@@ -47,8 +47,13 @@ function readSchedule_() {
 
 // 相容舊資料：試算表若把電話轉成數字，開頭的 0 會遺失（9XXXXXXXX → 09XXXXXXXX）
 function restorePhone_(v) {
-  var s = String(v || '');
+  var s = String(v || '').replace(/\D/g, '');
   return /^9\d{8}$/.test(s) ? '0' + s : s;
+}
+
+// 寫成 0911-123-123，含連字號就不會被試算表當成數字而吃掉開頭的 0
+function formatPhone_(p) {
+  return /^\d{10}$/.test(p) ? p.slice(0, 4) + '-' + p.slice(4, 7) + '-' + p.slice(7) : p;
 }
 
 function readBookings_() {
@@ -140,7 +145,7 @@ function handleCreateBooking_(req, now) {
     var rowRange = apptSheet.getRange(newRow, 1, 1, 13);
     rowRange.setNumberFormat('@');
     rowRange.setValues([[b.code, b.date, b.timeSlot, b.sequence, safeText_(b.name),
-      b.phone, b.department, b.doctor, safeText_(b.notes), b.status, b.createdAt, b.cancelledAt,
+      formatPhone_(b.phone), b.department, b.doctor, safeText_(b.notes), b.status, b.createdAt, b.cancelledAt,
       safeText_(b.email)]]);
     SpreadsheetApp.flush();
 
